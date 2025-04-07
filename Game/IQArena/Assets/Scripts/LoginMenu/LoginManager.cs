@@ -12,6 +12,7 @@ public class LoginManager : MonoBehaviour
     [SerializeField] private GameObject passwordConfirmationPanel;
     [SerializeField] private GameObject activationControlPanel;
     [SerializeField] private GameObject logingeriPanel;
+
     
 
     public void LoginPanelOpen()
