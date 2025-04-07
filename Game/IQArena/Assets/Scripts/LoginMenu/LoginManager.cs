@@ -13,10 +13,8 @@ public class LoginManager : MonoBehaviour
     [SerializeField] private GameObject passwordConfirmationPanel;
     [SerializeField] private GameObject activationControlPanel;
     [SerializeField] private GameObject logingeriPanel;
-
-<<<<<<< Updated upstream
     
-=======
+
     [SerializeField] private Text kAdiLogin;
     [SerializeField] private Text passwordLogin;
 
@@ -27,7 +25,7 @@ public class LoginManager : MonoBehaviour
     public void Login()
     {
 
-        ApiConnection.Connection<User, LoginGetData>("Login.php", new User("", kAdiLogin.text, passwordLogin.text), (value) =>
+        ApiConnection.Connection<User, LoginGetData>("login.php", new User("", kAdiLogin.text, passwordLogin.text), (value) =>
         {
 
             if (value.success)
@@ -44,7 +42,9 @@ public class LoginManager : MonoBehaviour
     public void SignIn()
     {
 
-        ApiConnection.Connection<User, LoginGetData>("Login.php", new User(mailSignIn.text, kAdiSignIn.text, passwordSignIn.text),(value) =>
+
+
+        ApiConnection.Connection<User, LoginGetData>("login.php", new User(mailSignIn.text, kAdiSignIn.text, passwordSignIn.text),(value) =>
         {
 
             if (value.success)
@@ -59,11 +59,10 @@ public class LoginManager : MonoBehaviour
         });
 
     }
->>>>>>> Stashed changes
 
     public void LoginPanelOpen()
     {
-
+        
         menuPenel.SetActive(false);
         loginPanel.SetActive(true);
 
@@ -103,7 +102,8 @@ public class LoginManager : MonoBehaviour
 
     public void LogingeriPanelOpen()
     {
-        
+        signinPanel.SetActive(false );
+        passwordConfirmationPanel.SetActive(false);
         loginPanel.SetActive(false) ;
         menuPenel .SetActive(true) ;
     }
