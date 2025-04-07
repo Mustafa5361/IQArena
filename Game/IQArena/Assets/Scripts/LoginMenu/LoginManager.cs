@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoginManager : MonoBehaviour
 {
@@ -13,11 +14,56 @@ public class LoginManager : MonoBehaviour
     [SerializeField] private GameObject activationControlPanel;
     [SerializeField] private GameObject logingeriPanel;
 
+<<<<<<< Updated upstream
     
+=======
+    [SerializeField] private Text kAdiLogin;
+    [SerializeField] private Text passwordLogin;
+
+    [SerializeField] private Text mailSignIn;
+    [SerializeField] private Text kAdiSignIn;
+    [SerializeField] private Text passwordSignIn;
+
+    public void Login()
+    {
+
+        ApiConnection.Connection<User, LoginGetData>("Login.php", new User("", kAdiLogin.text, passwordLogin.text), (value) =>
+        {
+
+            if (value.success)
+            {
+                Debug.Log("giriþ Baþarýlý.");
+            }
+            else
+                Debug.Log("giriþ Hatalý.");
+
+        });
+
+    }
+
+    public void SignIn()
+    {
+
+        ApiConnection.Connection<User, LoginGetData>("Login.php", new User(mailSignIn.text, kAdiSignIn.text, passwordSignIn.text),(value) =>
+        {
+
+            if (value.success)
+            {
+                Debug.Log("Kayýt Baþarýlý");
+            }
+            else
+            {
+                Debug.Log("Kayýt Hatalý");
+            }
+
+        });
+
+    }
+>>>>>>> Stashed changes
 
     public void LoginPanelOpen()
     {
-        passwordConfirmationPanel.SetActive(false);
+
         menuPenel.SetActive(false);
         loginPanel.SetActive(true);
 

@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public static class ApiConnection
 {
 
-    private static string URL = "localhost/";
+    private static string URL = "http://localhost/";
 
 
     public static async void Connection<T>(string connection,T value, Action<T> GetData)
@@ -36,8 +36,8 @@ public static class ApiConnection
             if (request.result == UnityWebRequest.Result.Success)
             {
 
-                var result = JsonUtility.FromJson<T2>(request.downloadHandler.text);
-                GetData.Invoke(result);
+                T2 returnValue = JsonUtility.FromJson<T2>(request.downloadHandler.text);
+                GetData.Invoke(returnValue);
 
             }
             else
