@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
     $value = json_decode($value);
 
-    if($value -> usermame == "deneme" && $value -> "deneme")
+    if($value -> usermame == "deneme" && $value -> password = "deneme")
     {
         echo json_encode(["success" => true, "message" => "login successful"]);
     }
