@@ -13,7 +13,8 @@ public class LoginManager : MonoBehaviour
     [SerializeField] private GameObject passwordConfirmationPanel;
     [SerializeField] private GameObject activationControlPanel;
     [SerializeField] private GameObject logingeriPanel;
-    
+  
+
 
     [SerializeField] private Text kAdiLogin;
     [SerializeField] private Text passwordLogin;
@@ -59,6 +60,8 @@ public class LoginManager : MonoBehaviour
         });
 
     }
+
+
 
     public void LoginPanelOpen()
     {
