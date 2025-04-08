@@ -49,9 +49,53 @@ class dbConnection
         }
 
     }
+
     function SingIn($mail, $username, $password)
     { 
         $sorgu = "Insert into player (email, username, password) values ('$mail', '$username', '$password');";
+
+        $conn = $this -> Connection();
+
+        $resault = $conn -> prepare($sorgu);
+
+        if ($resault->execute())
+        {
+
+            $this -> Close($conn);
+            return true;
+
+        }
+        else
+        {
+            
+            $this -> Close($conn);
+            return false;
+
+        }
+
+    }
+
+    function TokenControl($Token)
+    {
+        $sorgu = "select TokenID from Tokens where Token = " . $Token;
+        $conn = $this -> Connection();
+        $resault = $conn -> query($sorgu);
+        $this -> Close($conn);
+
+        if($resault -> num_rows >0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
+    function SaveToken($playerID, $token)
+    { 
+        $sorgu = "Insert into tokens (playerID, token) values ('$playerID', '$token');";
 
         $conn = $this -> Connection();
 
