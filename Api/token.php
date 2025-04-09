@@ -28,6 +28,20 @@ class Token
 
     }
 
+    function activationCreateToken()
+    {   
+
+        do
+        {
+
+            $token = bin2hex(random_bytes(32));
+
+        }while($this -> db -> fetch("select temporaryplayer from tokens where Token = :token", ["token" => $token]) != false);
+         
+        return $token;
+
+    }
+
     function TokenControl($token)
     {
         $this -> db -> fetch("select tokenID from tokens where Token = :token", ["token" => $token]);

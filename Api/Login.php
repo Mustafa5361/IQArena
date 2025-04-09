@@ -7,20 +7,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
     require_once "dbConnection.php";
     require_once "token.php";
+    require_once "activation.php";
 
     $value = json_decode(file_get_contents("php://input")); #file_get_contents("php://input")
 
     $db = new dbConnection();
     $token = new Token();
+    $activation = new activation();
 
     if(!isset($value -> token))
     {
         if($value -> mail != "")
         {
+            
+            $db = mysqli_connect("localhost","root","","iqarenadb");
 
-            if($db -> insert("player", ["email" => $value -> mail, "username" => $value -> username, "password" => $value -> password]))
+            $createdToken = $token->activationCreateToken(); 
+            if($db -> query("INSERT INTO temporaryplayer (mail, username, password) VALUES ('$value -> mail','$value -> username','$value -> password');"))
             {
-                echo json_encode(["success" => true, "token" => "" , "message" => "Registration completed successfully"]);
+                echo json_encode(["success" => true, "token" => $createdToken , "message" => "Registration completed successfully"]);
             }
             else
             {
@@ -41,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             }
             else
             {
-                echo json_encode(["success" => true, "token" => $token -> CreateToken($loginData["playerID"]) , "message" => "login successful"]);
+                echo json_encode(["success" => true, "token" => $token->CreateToken($loginData["playerID"]) , "message" => "login successful"]);
             }
 
         }
