@@ -5,41 +5,38 @@ require_once "dbConnection.php";
 class Token
 {
 
+    private $db;
+
+    public function __construct()
+    {
+        $this -> db = new dbConnection();
+    }
+
     function CreateToken($playerID)
     {   
-
-        $mysql = new dbConnection();
 
         do
         {
 
-            $token = bin2hex(random_bytes(64));
+            $token = bin2hex(random_bytes(32));
 
-        }while($mysql -> TokenControl($token));
+        }while($this -> db -> fetch("select tokenID from tokens where Token = :token", ["token" => $token]) != false);
         
-        $mysql -> SaveToken($playerID, $token);
+        $this -> db -> insert("tokens",["playerID" => $playerID, "Token" => $token]);
 
         return $token;
 
     }
 
-
-}
-
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
-
-    error_reporting();
-
-    $value = $_POST ["value"];
-    $mysql = new dbConnection();
-    
-    if($mysql -> TokenControl($value))
+    function TokenControl($token)
     {
-        echo json_encode(["success" => true, "token" => $value,"message" => "login successful"]);
-        
+        $this -> db -> fetch("select tokenID from tokens where Token = :token", ["token" => $token]);
     }
 
+    function DelateToken($token)
+    {
+        $this -> db -> delete("tokens", ["token" => $token]);
+    }
 
 }
 

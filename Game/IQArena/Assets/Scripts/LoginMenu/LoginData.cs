@@ -23,6 +23,7 @@ public class LoginGetData
 {
 
     public bool success;
+    public string token;
     public string massage;
 
 }

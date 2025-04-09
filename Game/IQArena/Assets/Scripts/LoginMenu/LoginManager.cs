@@ -31,6 +31,15 @@ public class LoginManager : MonoBehaviour
 
             if (value.success)
             {
+                if (true) // hesabý kaydet açýkmý
+                {
+
+                    FileSystem.JsonSave("Token", value.token);
+
+                }
+
+                GameManager.SetToken(value.token);
+
                 Debug.Log("giriþ Baþarýlý.");
             }
             else

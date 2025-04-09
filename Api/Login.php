@@ -8,40 +8,46 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     require_once "dbConnection.php";
     require_once "token.php";
 
-    $value = json_decode($_POST["value"]); #file_get_contents("php://input")
+    $value = json_decode(file_get_contents("php://input")); #file_get_contents("php://input")
 
-    $sqlConn = new dbConnection();
-
+    $db = new dbConnection();
     $token = new Token();
 
-    if($value -> mail != "")
+    if(!isset($value -> token))
     {
-
-        if($sqlConn -> SingIn($value -> mail, $value -> username, $value -> password))
+        if($value -> mail != "")
         {
-            echo json_encode(["success" => true, "token" => "" , "message" => "Registration completed successfully"]);
+
+            if($db -> insert("player", ["email" => $value -> mail, "username" => $value -> username, "password" => $value -> password]))
+            {
+                echo json_encode(["success" => true, "token" => "" , "message" => "Registration completed successfully"]);
+            }
+            else
+            {
+                echo json_encode(["success" => false, "token" => "" , "message" => "Failed registration"]);
+            }
+
         }
         else
         {
-            echo json_encode(["success" => false, "token" => "" , "message" => "Failed registration"]);
-        }
 
+            $sorgu = ["username" => $value -> username, "password" => $value -> password];
+
+            $loginData = $db->fetch("select playerID From player where username = :username and password = :password", $sorgu);
+            
+            if($loginData == false)
+            {
+                echo json_encode(["success" => false, "token" => "" ,"message" => "username or password is incorrect"]);
+            }
+            else
+            {
+                echo json_encode(["success" => true, "token" => $token -> CreateToken($loginData["playerID"]) , "message" => "login successful"]);
+            }
+
+        }
     }
     else
-    {
-
-        $loginData = $sqlConn->login($value -> username, $value -> password);
-        
-        if($loginData == false)
-        {
-            echo json_encode(["success" => false, "token" => "" ,"message" => "username or password is incorrect"]);
-        }
-        else
-        {
-            echo json_encode(["success" => true, "token" => $token -> CreateToken($loginData) , "message" => "login successful"]);
-        }
-
-    }
+        $token -> DelateToken($value -> token);
 
 
 }

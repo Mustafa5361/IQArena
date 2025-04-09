@@ -1,123 +1,96 @@
 <?php
 
-class dbConnection
+class dbConnection 
 {
+    private $host = "localhost";
+    private $dbName = "iqarenadb";
+    private $username = "root";
+    private $password = "";
+    private $conn;
 
-    function Connection()
+    public function __construct() 
     {
-
-        $host = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "iqarenadb";
-
-        $conn = mysqli_connect($host, $username, $password, $database);
-
-        if ($conn -> connect_error)
-        {
-            die("Database Connection Error : " . $conn -> connect_error);
-        }
-
-        return $conn;
-
+        $this->connect();
     }
 
-    function Close($conn)
+    private function connect() 
     {
-        mysqli_close($conn);
+        try 
+        {
+            $dsn = "mysql:host=$this->host;dbname=$this->dbName;charset=utf8mb4";
+            $this->conn = new PDO($dsn, $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) 
+        {
+            die("Bağlantı Hatası: " . $e->getMessage());
+        }
     }
 
-    function Login($username, $password)
+    public function query($sql, $params = []) 
     {
-        
-        $sorgu = "select playerID from player where username = '" . $username . "' and password = '" . $password . "' and isDeleted = 0";
-
-        $conn = $this -> Connection();
-
-        $resault = $conn -> query($sorgu);
-        
-        $this -> Close($conn);
-
-        if($resault -> num_rows > 0)
+        try 
         {
-            $row = $resault->fetch_object();
-            return $row->playerID;
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute($params);
+            return $stmt;
+        } catch (PDOException $e) {
+            die("Sorgu Hatası: " . $e->getMessage());
         }
-        else
-        {
-            return false;
-        }
-
     }
 
-    function SingIn($mail, $username, $password)
-    { 
-        $sorgu = "Insert into player (email, username, password) values ('$mail', '$username', '$password');";
-
-        $conn = $this -> Connection();
-
-        $resault = $conn -> prepare($sorgu);
-
-        if ($resault->execute())
-        {
-
-            $this -> Close($conn);
-            return true;
-
-        }
-        else
-        {
-            
-            $this -> Close($conn);
-            return false;
-
-        }
-
-    }
-
-    function TokenControl($Token)
+    public function fetchAll($sql, $params = []) 
     {
-        $sorgu = "select TokenID from Tokens where Token = " . $Token;
-        $conn = $this -> Connection();
-        $resault = $conn -> query($sorgu);
-        $this -> Close($conn);
-
-        if($resault -> num_rows >0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
+        return $this->query($sql, $params)->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function SaveToken($playerID, $token)
-    { 
-        $sorgu = "Insert into tokens (playerID, token) values ('$playerID', '$token');";
-
-        $conn = $this -> Connection();
-
-        $resault = $conn -> prepare($sorgu);
-
-        if ($resault->execute())
-        {
-
-            $this -> Close($conn);
-            return true;
-
-        }
-        else
-        {
-            
-            $this -> Close($conn);
-            return false;
-
-        }
-
+    public function fetch($sql, $params = []) 
+    {
+        return $this->query($sql, $params)->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function insert($table, $data) 
+    {
+        $fields = implode(",", array_keys($data));
+        $placeholders = ":" . implode(", :", array_keys($data));
+        $sql = "INSERT INTO $table ($fields) VALUES ($placeholders)";
+        $this->query($sql, $data);
+        return $this->conn->lastInsertId();
+    }
+
+    public function update($table, $data, $where) 
+    {
+        $set = "";
+        foreach ($data as $key => $value) 
+        {
+            $set .= "$key = :$key, ";
+        }
+        $set = rtrim($set, ", ");
+
+        $whereClause = "";
+        foreach ($where as $key => $value) 
+        {
+            $whereClause .= "$key = :where_$key AND ";
+        }
+        $whereClause = rtrim($whereClause, " AND ");
+
+        $mergedData = array_merge($data, array_combine(array_map(fn($k) => "where_$k", array_keys($where)), array_values($where)));
+
+        $sql = "UPDATE $table SET $set WHERE $whereClause";
+        return $this->query($sql, $mergedData);
+    }
+
+    public function delete($table, $where) 
+    {
+        $whereClause = "";
+        foreach ($where as $key => $value) 
+        {
+            $whereClause .= "$key = :$key AND ";
+        }
+        $whereClause = rtrim($whereClause, " AND ");
+
+        $sql = "DELETE FROM $table WHERE $whereClause";
+        return $this->query($sql, $where);
+    }
 }
 
 ?>
