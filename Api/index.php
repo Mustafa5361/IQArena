@@ -1,6 +1,6 @@
 <?php
 
-echo strlen("394e57bad8e512fde504b9326ad5e19a83f363f237c22908e0fff9137ff66ef5");
+#test için kullanılan bir script
 
 require_once "dbConnection.php";
 
