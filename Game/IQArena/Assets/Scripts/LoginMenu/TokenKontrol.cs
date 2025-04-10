@@ -11,6 +11,12 @@ public class TokenKontrol : MonoBehaviour
         if(FileSystem.GetFile("Token"))
         {
             GameManager.SetToken(FileSystem.JsonLoad<string>("Token"));
+
+            ApiConnection.Connection<LoginGetData>("", new LoginGetData(true, GameManager.token), (value)=>
+            {
+
+            });
+
         }
 
     }

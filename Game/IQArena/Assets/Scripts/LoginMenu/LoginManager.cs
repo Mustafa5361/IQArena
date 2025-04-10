@@ -16,57 +16,80 @@ public class LoginManager : MonoBehaviour
   
 
 
-    [SerializeField] private Text kAdiLogin;
+    [SerializeField] private Text usernameLogin;
     [SerializeField] private Text passwordLogin;
 
     [SerializeField] private Text mailSignIn;
-    [SerializeField] private Text kAdiSignIn;
+    [SerializeField] private Text usernameSignIn;
     [SerializeField] private Text passwordSignIn;
+    [SerializeField] private Text passwordControlSignIn;
+
 
     public void Login()
     {
 
-        ApiConnection.Connection<User, LoginGetData>("login.php", new User("", kAdiLogin.text, passwordLogin.text), (value) =>
+        if (usernameLogin.text != "" && passwordLogin.text != "")
         {
 
-            if (value.success)
+            ApiConnection.Connection<User, LoginSetData>("login.php", new User("", usernameLogin.text, passwordLogin.text), (value) =>
             {
-                if (true) // hesabý kaydet açýkmý
+
+                if (value.success)
                 {
+                    if (true) // hesabý kaydet açýkmý
+                    {
 
-                    FileSystem.JsonSave("Token", value.token);
+                        FileSystem.JsonSave("Token", value.token);
 
+                    }
+
+                    GameManager.SetToken(value.token);
+
+                    Debug.Log("giriþ Baþarýlý.");
                 }
+                else
+                    Debug.Log("giriþ Hatalý.");
 
-                GameManager.SetToken(value.token);
+            });
 
-                Debug.Log("giriþ Baþarýlý.");
-            }
-            else
-                Debug.Log("giriþ Hatalý.");
+        }
+        else
+        {
+            Debug.Log("Giriþ Bilgilerini doldurunuz.");
+        }
 
-        });
 
     }
 
     public void SignIn()
     {
+        if (usernameSignIn.text != "" && passwordSignIn.text != "" && passwordControlSignIn.text != "" && mailSignIn.text != "")
+            if (mailSignIn.text.Contains("@"))
+                if (passwordSignIn.text == passwordControlSignIn.text)
+                {
 
+                    ApiConnection.Connection<User, LoginSetData>("login.php", new User(mailSignIn.text, usernameSignIn.text, passwordSignIn.text), (value) =>
+                    {
 
+                        if (value.success)
+                        {
+                            signinPanel.SetActive(false);
+                            loginPanel.SetActive(true);
+                        }
+                        else
+                        {
+                            Debug.Log("ERROR : " + value.massage);
+                        }
 
-        ApiConnection.Connection<User, LoginGetData>("login.php", new User(mailSignIn.text, kAdiSignIn.text, passwordSignIn.text),(value) =>
-        {
+                    });
 
-            if (value.success)
-            {
-                Debug.Log("Kayýt Baþarýlý");
-            }
+                }
+                else
+                    Debug.Log("Þifreleri Ayný Girin.");
             else
-            {
-                Debug.Log("Kayýt Hatalý");
-            }
-
-        });
+                Debug.Log("Düzgün bir mail adresi giriniz.");
+        else
+            Debug.Log("Tüm Alanlarý Doldurun.");
 
     }
 

@@ -36,7 +36,7 @@ class Token
 
             $token = bin2hex(random_bytes(32));
 
-        }while($this -> db -> fetch("select temporaryplayer from tokens where Token = :token", ["token" => $token]) != false);
+        }while($this -> db -> fetch("select Token from tempPlayer where Token = :token", ["token" => $token]) != false);
          
         return $token;
 

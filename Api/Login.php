@@ -2,7 +2,7 @@
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-
+    
     error_reporting();
 
     require_once "dbConnection.php";
@@ -20,10 +20,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         if($value -> mail != "")
         {
             
-            $db = mysqli_connect("localhost","root","","iqarenadb");
-
             $createdToken = $token->activationCreateToken(); 
-            if($db -> query("INSERT INTO temporaryplayer (mail, username, password) VALUES ('$value -> mail','$value -> username','$value -> password');"))
+
+            if($db -> insert("tempPlayer",["mail" => $value -> mail, "username" => $value -> username, "password" => $value -> password, "Token" => $createdToken, "activationCode" => $activation->CreateCode()]) == 0)
             {
                 echo json_encode(["success" => true, "token" => $createdToken , "message" => "Registration completed successfully"]);
             }

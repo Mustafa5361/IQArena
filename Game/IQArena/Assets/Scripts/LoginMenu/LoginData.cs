@@ -19,11 +19,26 @@ public class User
 
 }
 
-public class LoginGetData
+public class LoginSetData
 {
 
     public bool success;
     public string token;
     public string massage;
+
+}
+
+class LoginGetData
+{
+
+    //login mi yoksa logout nu yaptýgýný gönderiyor.
+    public bool login;
+    public string token;
+
+    public LoginGetData(bool login, string token)
+    {
+        this.login = login;
+        this.token = token;
+    }
 
 }

@@ -1525,8 +1525,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -162, y: -258.97}
-  m_SizeDelta: {x: 105.1254, y: 66.856}
+  m_AnchoredPosition: {x: -170, y: -325.83}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &371834162
 MonoBehaviour:
@@ -3429,8 +3429,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 203, y: -173}
-  m_SizeDelta: {x: 425, y: 55}
+  m_AnchoredPosition: {x: 300, y: -190.54}
+  m_SizeDelta: {x: 600, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &896005313
 MonoBehaviour:
@@ -4391,8 +4391,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 104, y: -258.97}
-  m_SizeDelta: {x: 341.4, y: 66.8589}
+  m_AnchoredPosition: {x: 300.00006, y: -325.83}
+  m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1178988467
 MonoBehaviour:
@@ -5280,8 +5280,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 203, y: -94}
-  m_SizeDelta: {x: 425, y: 55}
+  m_AnchoredPosition: {x: 300, y: -101.5}
+  m_SizeDelta: {x: 600, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1354191019
 MonoBehaviour:
@@ -6457,11 +6457,12 @@ MonoBehaviour:
   passwordConfirmationPanel: {fileID: 1689376893}
   activationControlPanel: {fileID: 1129881838}
   logingeriPanel: {fileID: 2005222694}
-  kAdiLogin: {fileID: 339740789}
+  usernameLogin: {fileID: 339740789}
   passwordLogin: {fileID: 620383614}
   mailSignIn: {fileID: 704433539}
-  kAdiSignIn: {fileID: 97826360}
+  usernameSignIn: {fileID: 97826360}
   passwordSignIn: {fileID: 1526694926}
+  passwordControlSignIn: {fileID: 859729199}
 --- !u!4 &1688896011
 Transform:
   m_ObjectHideFlags: 0
@@ -6771,8 +6772,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 203, y: -19}
-  m_SizeDelta: {x: 425, y: 55}
+  m_AnchoredPosition: {x: 300, y: -19}
+  m_SizeDelta: {x: 600, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1871483256
 MonoBehaviour:
@@ -7629,8 +7630,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 203, y: 52}
-  m_SizeDelta: {x: 425, y: 55}
+  m_AnchoredPosition: {x: 300, y: 59.5}
+  m_SizeDelta: {x: 600, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2146606961
 MonoBehaviour:
@@ -7696,7 +7697,7 @@ MonoBehaviour:
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
   m_Text: 
-  m_CaretBlinkRate: 0.85
+  m_CaretBlinkRate: 0.81
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
