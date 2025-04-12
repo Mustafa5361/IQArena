@@ -36,6 +36,7 @@ public static class ApiConnection
             if (request.result == UnityWebRequest.Result.Success)
             {
 
+                Debug.Log(request.downloadHandler.text);
                 T2 returnValue = JsonUtility.FromJson<T2>(request.downloadHandler.text);
                 GetData.Invoke(returnValue);
 

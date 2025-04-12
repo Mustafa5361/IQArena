@@ -408,6 +408,7 @@
 "Assets/Importing/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/Importing/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
 "Assets/Scripts/ApiConnection/ApiConnection.cs"
+"Assets/Scripts/ApiConnection/Communication.cs"
 "Assets/Scripts/FileSystem/FileSystem.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/LoginMenu/LoginData.cs"

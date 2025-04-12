@@ -30,7 +30,7 @@ class createQuestion
 
     }
 
-    function askQuestion()
+    function selectRandomQuestion()
     {
         
         $difficultyLevel = 0;
@@ -38,16 +38,30 @@ class createQuestion
         for ($i = 1; $i <= 10; $i++)
         {
 
+            $difficultyLevelNow = $difficultyLevel;
+            $ust = false;
+            $questions = [];
+
             do{
 
-                
+                if($ust || $difficultyLevel <= 0)
+                {
+                    $difficultyLevelNow++;
+                    $ust = true;
+                }
+                else
+                    $difficultyLevel--;
+
                 $query = $this -> db -> fetch("select questionID from unit where difficultyLevel = :difficultyLevel order by rand();",["difficultyLevel" => $difficultyLevel]);
+
+                array_push($questions, $query);
 
             }while($query == false);
 
-        }
+            $difficultyLevel++; 
 
-        
+        }  
+
     }
 
 }    

@@ -21,10 +21,10 @@ public class User
 
 public class LoginSetData
 {
-
+     
     public bool success;
     public string token;
-    public string massage;
+    public string message;
 
 }
 

@@ -10,10 +10,7 @@ public class GameManager : MonoBehaviour
 
     public static void SetToken(string token)
     {
-        if (GameManager.token == "")
-        {
-            GameManager.token = token;
-        }
+        GameManager.token = token;
     }
 
     private void Awake()

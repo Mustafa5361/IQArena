@@ -1,7 +1,9 @@
 <?php
 // register.php ingin
 
-require_once 'dbConnection.php'; // PHPMailer ayarları
+require_once "dbConnection.php"; // PHPMailer ayarları
+require_once "mail.php";
+
 class activation
 {
 
@@ -16,6 +18,7 @@ class activation
     {
         
         $code = bin2hex(random_bytes(3)); 
+        
         return $code;
 
     }

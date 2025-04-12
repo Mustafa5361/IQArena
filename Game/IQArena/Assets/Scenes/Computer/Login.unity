@@ -702,7 +702,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1688896010}
         m_TargetAssemblyTypeName: LoginManager, Assembly-CSharp
-        m_MethodName: PasswordConfirmationPanelOpen
+        m_MethodName: sendActivationCode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6463,6 +6463,7 @@ MonoBehaviour:
   usernameSignIn: {fileID: 97826360}
   passwordSignIn: {fileID: 1526694926}
   passwordControlSignIn: {fileID: 859729199}
+  ActivationCodeTxt: {fileID: 1053791917}
 --- !u!4 &1688896011
 Transform:
   m_ObjectHideFlags: 0

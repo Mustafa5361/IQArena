@@ -24,6 +24,7 @@ public class LoginManager : MonoBehaviour
     [SerializeField] private Text passwordSignIn;
     [SerializeField] private Text passwordControlSignIn;
 
+    [SerializeField] private Text ActivationCodeTxt;
 
     public void Login()
     {
@@ -73,12 +74,13 @@ public class LoginManager : MonoBehaviour
 
                         if (value.success)
                         {
+                            GameManager.SetToken(value.token);
                             signinPanel.SetActive(false);
-                            loginPanel.SetActive(true);
+                            activationControlPanel.SetActive(true);
                         }
                         else
                         {
-                            Debug.Log("ERROR : " + value.massage);
+                            Debug.Log("ERROR : " + value.message);
                         }
 
                     });
@@ -93,7 +95,30 @@ public class LoginManager : MonoBehaviour
 
     }
 
+    public void sendActivationCode()
+    {
 
+        if (ActivationCodeTxt.text.Trim().Length == 6)
+        {
+
+            ApiConnection.Connection<SendToActivalionCode, LoginSetData>("login.php", new SendToActivalionCode(GameManager.token,ActivationCodeTxt.text.Trim(), false), (value) =>
+            {
+
+                if (value.success)
+                {
+                    GameManager.SetToken(value.token);
+                    //oyun ekraný yüklenicek.
+                }
+                else
+                    Debug.Log("Aktivation Code hatalý");
+
+            });
+
+        }
+        else
+            Debug.Log("Aktivasyon kodu 6 haneli olmalý");
+
+    }
 
     public void LoginPanelOpen()
     {
@@ -125,14 +150,6 @@ public class LoginManager : MonoBehaviour
         passwordResetPanel.SetActive(false);
         activationControlPanel.SetActive(true);
 
-    }
-
-    public void PasswordConfirmationPanelOpen()
-    {
-
-        activationControlPanel.SetActive(false);
-        passwordConfirmationPanel.SetActive(true);
-    
     }
 
     public void LogingeriPanelOpen()
