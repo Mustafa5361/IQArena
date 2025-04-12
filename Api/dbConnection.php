@@ -34,7 +34,7 @@ class dbConnection
             $stmt->execute($params);
             return $stmt;
         } catch (PDOException $e) {
-            die("Sorgu Hatası: " . $e->getMessage());
+            exit("Sorgu Hatası: " . $e->getMessage());
         }
     }
 
