@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoginManager : MonoBehaviour
@@ -46,7 +47,7 @@ public class LoginManager : MonoBehaviour
 
                     GameManager.SetToken(value.token);
 
-                    Debug.Log("giriþ Baþarýlý.");
+                    SceneManager.LoadScene("MainMenu");
                 }
                 else
                     Debug.Log("giriþ Hatalý.");
@@ -107,7 +108,7 @@ public class LoginManager : MonoBehaviour
                 if (value.success)
                 {
                     GameManager.SetToken(value.token);
-                    //oyun ekraný yüklenicek.
+                    SceneManager.LoadScene("MainMenu");
                 }
                 else
                     Debug.Log("Aktivation Code hatalý");
