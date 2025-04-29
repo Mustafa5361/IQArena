@@ -410,14 +410,18 @@
 "Assets/Importing/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs"
 "Assets/Importing/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/Importing/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
+"Assets/Scripts/AdminPanelManager/AdminPanelManager.cs"
 "Assets/Scripts/ApiConnection/ApiConnection.cs"
 "Assets/Scripts/ApiConnection/Communication.cs"
 "Assets/Scripts/FileSystem/FileSystem.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/GameMenu/GameMenuManager.cs"
 "Assets/Scripts/LoginMenu/LoginData.cs"
 "Assets/Scripts/LoginMenu/LoginManager.cs"
 "Assets/Scripts/LoginMenu/TokenKontrol.cs"
 "Assets/Scripts/MainMenu/MainMenuManager.cs"
+"Assets/Scripts/MainMenu/ReadRoom.cs"
+"Assets/Scripts/MainMenu/WriteToken.cs"
 -langversion:9.0
 
 /deterministic
