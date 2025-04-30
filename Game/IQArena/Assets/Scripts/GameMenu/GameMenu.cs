@@ -7,6 +7,8 @@ public class GameMenu : MonoBehaviour
 {
     
     [SerializeField] private GameObject Menu;
+    [SerializeField] private GameObject QuitMenu;
+    [SerializeField] private GameObject StartPanel;
 
     private static int roomID;
 
@@ -15,6 +17,17 @@ public class GameMenu : MonoBehaviour
     public static void SetRoomID(int roomID)
     {
         GameMenu.roomID = roomID;
+    }
+
+    public void QuitPanel()
+    {
+        QuitMenu.SetActive(true);
+    }
+
+    public void QuitPanelClose()
+    {
+        StartPanel.SetActive(true);
+        QuitMenu.SetActive(false);
     }
 
     public void MainMenuOpen()
