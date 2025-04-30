@@ -6,9 +6,9 @@ class createQuestion
 
     private $db;
 
-    function __constructor()
+    function __construct()
     {
-        $this -> db=  new dbConnection();
+        $this -> db = new dbConnection();
     }
 
     function createQuestion($question)
@@ -32,37 +32,57 @@ class createQuestion
 
     function selectRandomQuestion()
     {
-        
+
         $difficultyLevel = 0;
-        
+        $questions = [];
+
         for ($i = 1; $i <= 10; $i++)
-        {
+        {   
 
+            $difficultyLevel++;
+
+            $up = false;
             $difficultyLevelNow = $difficultyLevel;
-            $ust = false;
-            $questions = [];
+            
+            do 
+            {
+                
+                $sorgu = "";
+                if(!empty($questions))
+                    foreach($questions as $question)
+                    {
+                        
+                        $sorgu .= (" and questionID != " . $question["questionID"]);
 
-            do{
+                    }
 
-                if($ust || $difficultyLevel <= 0)
+                // Soruyu seçmek için sorguyu çalıştırıyoruz
+                $query = $this->db->fetch(
+                    "SELECT questionID FROM question 
+                    WHERE difficultyLevel = :difficultyLevel and isHide = 0 $sorgu ORDER BY rand()", 
+                    ["difficultyLevel" => $difficultyLevelNow]
+                );
+                
+                if ($difficultyLevelNow <= 1 || $up) 
                 {
-                    $difficultyLevelNow++;
-                    $ust = true;
+                    $up = true;
+                    $difficultyLevelNow++; // Zorluk seviyesini arttırıyoruz
                 }
-                else
-                    $difficultyLevel--;
+                else 
+                {
+                    $difficultyLevelNow--; // Zorluk seviyesini azaltıyoruz
+                }
 
-                $query = $this -> db -> fetch("select questionID from unit where difficultyLevel = :difficultyLevel order by rand();",["difficultyLevel" => $difficultyLevel]);
+            } while ($query == false); // Eğer soru bulunmazsa döngü devam eder
 
-                array_push($questions, $query);
-
-            }while($query == false);
-
-            $difficultyLevel++; 
-
-        }  
+            array_push($questions, $query);
+            
+        }
+        
+        return $questions; // Eğer hiçbir soru seçilemezse null döner
 
     }
+
 
 }    
 

@@ -43,16 +43,14 @@ public class MainMenuManager : MonoBehaviour
                     if (value.success)
                     {
 
+                        GameMenu.SetRoomID(value.roomID);
                         SceneManager.LoadScene("Game");
-                        //RoomId gidecek
 
                     }
 
                 });
                 
             }
-
-           
 
             yield return new WaitForSeconds(1f);
 
@@ -94,6 +92,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void LogOut()
     {
+        GameManager.SetToken("");
         SceneManager.LoadScene("Login");
     }
     public void CloseTheGame()
@@ -111,18 +110,4 @@ public class MainMenuManager : MonoBehaviour
         Ranknmenu.SetActive(false);    
     }
 
-
-
-
-
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 }

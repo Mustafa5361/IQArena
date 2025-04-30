@@ -37,7 +37,7 @@ class Token
             $token = bin2hex(random_bytes(32));
 
         }while($this -> db -> fetch("select Token from tempPlayer where Token = :token", ["token" => $token]) != false);
-         
+        
         return $token;
 
     }
@@ -47,7 +47,7 @@ class Token
         $this -> db -> fetch("select tokenID from tokens where Token = :token", ["token" => $token]);
     }
 
-    function DelateToken($token)
+    function DeleteToken($token)
     {
         $this -> db -> delete("tokens", ["token" => $token]);
     }
