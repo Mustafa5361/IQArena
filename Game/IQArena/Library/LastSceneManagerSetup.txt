@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Mobile/LoginMenu.unity
+- path: Assets/Scenes/Mobile/GameMenu.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
