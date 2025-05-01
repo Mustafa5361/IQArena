@@ -421,7 +421,11 @@
 "Assets/Scripts/LoginMenu/LoginData.cs"
 "Assets/Scripts/LoginMenu/LoginManager.cs"
 "Assets/Scripts/LoginMenu/TokenKontrol.cs"
+"Assets/Scripts/MainMenu/ArrangementData.cs"
 "Assets/Scripts/MainMenu/MainMenuManager.cs"
+"Assets/Scripts/MainMenu/MatchHistoryData.cs"
+"Assets/Scripts/MainMenu/PlayerCup.cs"
+"Assets/Scripts/MainMenu/PlayerHistory.cs"
 "Assets/Scripts/MainMenu/ReadRoom.cs"
 "Assets/Scripts/MainMenu/WriteToken.cs"
 -langversion:9.0

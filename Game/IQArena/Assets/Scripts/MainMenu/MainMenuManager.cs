@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,7 +12,19 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject profilemenu;
     [SerializeField] private GameObject quitMenu;
     [SerializeField] private GameObject matchExpectionmenu;
-    [SerializeField] private GameObject Ranknmenu;
+
+    [SerializeField] private GameObject Ranknmenu; // listenin ana menüsü
+    [SerializeField] private GameObject RankPanel; //gösterilen liste
+    [SerializeField] private GameObject RankPlayerPlanel; // gösterilecek kiþiler
+
+    [SerializeField] private GameObject MatchPanel; // geçmiþin göstrileceði liste
+    [SerializeField] private GameObject MatchPlayerPlanel; // geçmiþ
+
+    [SerializeField] private List<PlayerHistory> MatchHistory1;
+    private List<GameObject> MatchHistoryObject = new List<GameObject>();
+
+    [SerializeField] private List<PlayerCup> PlayerRank;
+    private List<GameObject> PlayerRankObjekt = new List<GameObject>();
 
     public Text timeText;
 
@@ -66,16 +79,43 @@ public class MainMenuManager : MonoBehaviour
         mainMenu.SetActive(true);
 
     }
-    public void MainMenuOpen()
-    {
-        profilemenu.SetActive(false);
-        mainMenu.SetActive(true);
-    }
+    
 
     public void ProfileMenuOpen()
-    { 
+    {
+
+        float height = 0;
+
+        foreach (PlayerHistory matcchHistory in this.MatchHistory1)
+        {
+
+            GameObject go = Instantiate(MatchPlayerPlanel, MatchPanel.transform);
+
+            go.GetComponent<MatchHistory>().SetData(matcchHistory.win,matcchHistory.cup,matcchHistory.player1UserName, matcchHistory.player2UserName, matcchHistory.player1Time, matcchHistory.player2Time, matcchHistory.player1Point,
+                 matcchHistory.player2Point);
+
+            MatchHistoryObject.Add(go);
+
+            height += (go.GetComponent<RectTransform>().sizeDelta.y + 31);
+
+        }
+
+        RectTransform rt = MatchPanel.GetComponent<RectTransform>();
+        Vector2 sizeDelta = rt.sizeDelta;
+        sizeDelta.y = height;
+        rt.sizeDelta = sizeDelta;
         mainMenu.SetActive(false);
         profilemenu.SetActive(true);   
+    }
+    public void MainMenuOpen()
+    {
+
+        foreach (GameObject go in this.MatchHistoryObject)
+        {
+            Destroy(go);
+        }
+        profilemenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 
     public void ExitMenuOpen() 
@@ -102,11 +142,39 @@ public class MainMenuManager : MonoBehaviour
 
     public void RanKMenuOpen()
     {
+
+        float height = 0;
+
+        foreach(PlayerCup playerCup in this.PlayerRank)
+        {
+
+            GameObject go = Instantiate(RankPlayerPlanel, RankPanel.transform);
+
+            go.GetComponent<ArrangementData>().SetData(playerCup.username, playerCup.cup);
+
+            PlayerRankObjekt.Add(go);
+
+            height += (go.GetComponent<RectTransform>().sizeDelta.y + 31);
+
+        }
+
+        RectTransform rt = RankPanel.GetComponent<RectTransform>();
+        Vector2 sizeDelta = rt.sizeDelta;
+        sizeDelta.y = height;
+        rt.sizeDelta = sizeDelta;
         Ranknmenu.SetActive(true);
     }
 
     public void RanKMenuClose()
     {
+
+        foreach(GameObject go in this.PlayerRankObjekt)
+        {
+            Destroy(go);
+        }
+
+        PlayerRankObjekt.Clear();
+
         Ranknmenu.SetActive(false);    
     }
 
