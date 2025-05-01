@@ -56,14 +56,91 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 "questionID" => $value -> questionID
             ]
         )["matchQuestionID"];
+        
+        $time = time() - $delay;
 
         //ne kadar sürede cevap verdiği ve cevabı tutuluyor.
         $db -> insert("answer",
         [
             "roomplayerID" => $roomPlayerID,
             "matchquestionID" => $matchQuestionID,
-            "answer" => $value -> answer
+            "answer" => $value -> answer,
+            "answertime" => $time
         ]);
+
+        $db -> query(
+            "UPDATE roomplayer set delay = :delay
+            where roomplayerID = :roomplayerID",
+            [
+                "delay" => time(),
+                "roomplayerID" => $roomPlayerID
+            ]
+        );
+
+        $question = $db ->  fetch(
+            "SELECT q.questionID, q.question, q.answerA, q.answerB, q.answerC, q.answerD 
+            FROM question q INNER JOIN matchquestion m 
+            ON q.questionID=m.questionID 
+            where m.roomID =  :roomID 
+            AND m.questionIndex = ( SELECT questionIndex FROM matchquestion
+            where matchquestionID = :matchquestionID ) + 1",
+            [
+                "matchquestionID" => $matchQuestionID,
+                "roomID" => $value -> roomID
+            ]
+        );
+
+        if ($question != false)
+        {
+            echo json_encode($question);
+        }
+        else 
+        {
+
+            $answers = $db -> fetchAll(
+                "SELECT matchquestionID, answer, answertime from answer 
+                where roomplayerID = :roomplayerID ",
+                [
+                    "roomplayerID" => $roomPlayerID
+                ]
+            );
+
+            $totalScore = 0;
+
+            foreach($answers as $answer)
+            {
+
+                $correctAnswer =  $db -> fetch(
+                    "SELECT q.difficultyLevel q.answer from matchquestion m INNER JOIN question q 
+                    ON q.questionID = m.questionID 
+                    where  m.matchquestionID = :matchquestionID",
+                    [
+                        "matchquestionID" => $answer["matchquestionID"]
+                    ]
+                );
+
+                //puan hesaplama düzenlennebilir.
+
+                if($correctAnswer["answer"] == $answer["answer"])
+                {
+                    $totalScore += ($answer["answertime"] * 1.5 + $correctAnswer["difficultyLevel"] * 1.7 + 20);
+                }
+
+                $db -> query(
+                    "UPDATE roomplayer 
+                    set point = :point
+                    where roomplayerID = :roomplayerID",
+                    [
+                        "roomplayerID" => $roomPlayerID,
+                        "point" => $totalScore
+                    ]
+                );
+
+
+
+
+            }
+        }
 
     } 
     else 
