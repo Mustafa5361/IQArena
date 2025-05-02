@@ -28,6 +28,11 @@ public class MainMenuManager : MonoBehaviour
 
     public Text timeText;
 
+    public void SinglePlayerOpen()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
     public void matchExpectionmenuOpen()
     {
 
@@ -107,27 +112,30 @@ public class MainMenuManager : MonoBehaviour
         mainMenu.SetActive(false);
         profilemenu.SetActive(true);   
     }
-    public void MainMenuOpen()
+    public void ProfileMenuClose()
     {
 
         foreach (GameObject go in this.MatchHistoryObject)
         {
             Destroy(go);
         }
+
+        MatchHistoryObject.Clear();
+
         profilemenu.SetActive(false);
         mainMenu.SetActive(true);
     }
 
     public void ExitMenuOpen() 
     {
-        mainMenu.SetActive(false );
+        mainMenu.SetActive(false);
         quitMenu.SetActive(true);
     }
 
     public void QuitCancelMenuOpen()
     {
-        quitMenu.SetActive(false );
-        mainMenu.SetActive(true );
+        quitMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 
     public void LogOut()
@@ -142,7 +150,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void RanKMenuOpen()
     {
-
+        mainMenu.SetActive(false);
         float height = 0;
 
         foreach(PlayerCup playerCup in this.PlayerRank)
@@ -176,6 +184,7 @@ public class MainMenuManager : MonoBehaviour
         PlayerRankObjekt.Clear();
 
         Ranknmenu.SetActive(false);    
+        mainMenu.SetActive(true);
     }
 
 }

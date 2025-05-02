@@ -21,6 +21,7 @@ public class GameMenu : MonoBehaviour
 
     public void QuitPanel()
     {
+
         QuitMenu.SetActive(true);
     }
 
