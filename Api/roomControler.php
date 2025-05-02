@@ -23,30 +23,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         
         //token uzerinden eşleşmedeki playerRoomID ye erişiyoruz.
-        $roomPlayerID = $db -> fetch( 
-            "SELECT rm.roomplayerID
-            FROM roomplayer rm
-            JOIN encounterroom er 
-                ON (rm.roomplayerID = er.roomplayerID1 OR rm.roomplayerID = er.roomplayerID2)
-                WHERE rm.playerID = (
-                SELECT p.playerID
-                FROM player p
-                JOIN tokens t ON t.playerID = p.playerID
-                WHERE t.token = :token
-            )
-            AND er.status = 'matched'",
+        $query = $db -> fetch( 
+            "SELECT  rp.roomplayerID, rp.delay FROM roomplayer rp inner  Join  tokens t ON t.playerID = rp.playerID
+            inner Join encounterroom ect on rp.roomID = ect.roomID
+            where ect.status = 'matched' and t.token = :token ",
             ["token" => $value -> token]
         )["roomplayerID"];
         
-        
-        $delay = $db -> fetch(
-            "SELECT delay from roomplayer
-            where roomplayerID =  :roomPlayerID",
-            [
-                ":roomPlayerID" => $roomPlayerID
-            ]
-        )["delay"];
-        
+        $roomPlayerID = $query["playerID"];
+        $delay = $query["delay"];
+
         //matchquestions tablosundan sorunun bulundugu indexi çekiyoruz.
         $matchQuestionID = $db -> fetch(
             "SELECT matchquestionID from matchquestions
@@ -126,20 +112,99 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                     $totalScore += ($answer["answertime"] * 1.5 + $correctAnswer["difficultyLevel"] * 1.7 + 20);
                 }
 
-                $db -> query(
-                    "UPDATE roomplayer 
-                    set point = :point
-                    where roomplayerID = :roomplayerID",
-                    [
-                        "roomplayerID" => $roomPlayerID,
-                        "point" => $totalScore
-                    ]
+            }
+
+            $db -> query(
+                "UPDATE roomplayer 
+                set point = :point
+                where roomplayerID = :roomplayerID",
+                [
+                    "roomplayerID" => $roomPlayerID,
+                    "point" => $totalScore
+                ]
+            );
+
+            $pointControl = $db -> fetch(
+                "SELECT rp.point, rp.playerID FROM roomplayer rp inner join encounterroom ect
+                ON rp.roomID = ect.roomID
+                where roomPlayerID != :roomplayerID and roomID = :roomID
+                ",
+                [
+                    "roomplayerID" => $roomPlayerID,
+                    "roomID" => $value -> roomID
+                ]
+            );
+
+            if($pointControl["point"] != null)
+            {
+                // 2 oyuncunun bilgilerini al
+                $players = $db->fetchAll(
+                    "SELECT * FROM roomplayer WHERE roomID = :roomID",
+                    ["roomID" => $value->roomID]
                 );
 
+                $player1 = $players[0];
+                $player2 = $players[1];
 
+                // Kazanan ve kaybedeni belirle
+                if ($player1["point"] > $player2["point"]) {
+                    $winner = $player1;
+                    $loser = $player2;
+                } else {
+                    $winner = $player2;
+                    $loser = $player1;
+                }
 
+                // Winner/loser bilgilerini veritabanına yaz
+                $db->query("UPDATE roomplayer SET winner = 'Win' WHERE roomplayerID = :id", ["id" => $winner["roomplayerID"]]);
+                $db->query("UPDATE roomplayer SET winner = 'Lose' WHERE roomplayerID = :id", ["id" => $loser["roomplayerID"]]);
 
+                // Kupa hesaplama
+                $winnerPoint = $winner["point"];
+                $loserPoint = $loser["point"];
+                $pointDiff = abs($winnerPoint - $loserPoint); // abs :  mutlak değerde
+                $baseCup = 10;
+
+                if ($winnerPoint < $loserPoint) 
+                {
+                    $cupGain = $baseCup + intval($pointDiff / 10);
+                    $cupLose = $baseCup - intval($pointDiff / 20);
+                } 
+                else 
+                {
+                    $cupGain = $baseCup - intval($pointDiff / 20);
+                    $cupLose = $baseCup + intval($pointDiff / 10);
+                }
+                // kupa kazanımı ve kaybının minimum 5, maksimum 30 arasında sınırlandırılması
+                $cupGain = max(5, min(30, $cupGain));
+                $cupLose = max(5, min(30, $cupLose));
+
+                // roomplayer tablosundaki cupQuantity güncelle
+                $db->query("UPDATE roomplayer SET cupQuantity = cupQuantity + :cup WHERE roomplayerID = :id", 
+                [
+                    "cup" => $cupGain,
+                    "id" => $winner["roomplayerID"]
+                ]);
+                $db->query("UPDATE roomplayer SET cupQuantity = cupQuantity - :cup WHERE roomplayerID = :id", 
+                [
+                    "cup" => $cupLose,
+                    "id" => $loser["roomplayerID"]
+                ]);
+
+                // player tablosundaki toplam kupaları da güncelle (isteğe bağlı)
+                $db->query("UPDATE player SET cup = cup + :cup WHERE playerID = :id", 
+                [
+                    "cup" => $cupGain,
+                    "id" => $winner["playerID"]
+                ]);
+                $db->query("UPDATE player SET cup = cup - :cup WHERE playerID = :id", 
+                [
+                    "cup" => $cupLose,
+                    "id" => $loser["playerID"]
+                ]);
             }
+
+
         }
 
     } 
@@ -170,15 +235,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
         // 2. Oyuncu daha önce eşleşmiş mi?
         $roomControl = $db->fetch(
-            "SELECT e.roomID
-            FROM encounterroom e
-            INNER JOIN roomplayer rp ON rp.roomplayerID = e.roomplayerID1
-            WHERE rp.playerID = :playerID AND e.status = 'matched'
-            UNION
-            SELECT e.roomID
-            FROM encounterroom e
-            INNER JOIN roomplayer rp ON rp.roomplayerID = e.roomplayerID2
-            WHERE rp.playerID = :playerID AND e.status = 'matched'",
+            "SELECT ect.roomID FROM encounterroom ect inner join roomplayer rp on ect.roomID = rp.roomID
+            where rp.roomplayerID =  :playerID and ect.status = 'matched'",
             ["playerID" => $query["playerID"]]
         );
 
@@ -217,24 +275,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         );
 
         if ($queryMatch != false) {
-            // Rakip bulunduysa encounterroom'a kayıt
-            $roomplayerID1 = $db->insert("roomplayer", [
-                "playerID" => $query["playerID"],
-                "delay" => time()
-            ]);
 
-            $roomplayerID2 = $db->insert("roomplayer", [
-                "playerID" => $queryMatch["playerID"],
-                "delay" => time()
-            ]);
-
-            // roomplayer tablosu insert işlemi ID döndürüyorsa doğrudan kullan
-            $roomID = $db->insert("encounterroom", [
-                "roomplayerID1" => $roomplayerID1,
-                "roomplayerID2" => $roomplayerID2,
+            //eencounterrooma oda oluşturma
+            $roomID = $db->insert("encounterroom", 
+            [
                 "status" => 'matched'
             ]);
 
+            // roomplayer tablosu insert işlemi ID döndürüyorsa doğrudan kullan
+            //1.oyuncu
+            $db -> insert("roomplayer",
+            [
+                "roomID" => $roomID,
+                "playerID" => $query["playerID"],
+                "delay" => time()
+            ]);
+            //2.oyuncu
+            $db -> insert("roomplayer",
+            [
+                "roomID" => $roomID,
+                "playerID" => $queryMatch["playerID"],
+                "delay" => time()
+            ]);
+            
             $createQuestion = new createQuestion();
             $questions = $createQuestion->selectRandomQuestion();
 
