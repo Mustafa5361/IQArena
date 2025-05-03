@@ -30,7 +30,7 @@ class createQuestion
 
     }
 
-    function selectRandomQuestion()
+    function selectRandomQuestion(): array
     {
 
         $difficultyLevel = 0;

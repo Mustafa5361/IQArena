@@ -8,6 +8,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     require_once "dbConnection.php";
     require_once "token.php";
     require_once "activation.php";
+    require_once "mail.php";
 
     $value = json_decode($_POST["value"]); #file_get_contents("php://input")
 

@@ -3,7 +3,7 @@
 3    package="com.DefaultCompany.IQArena"
 4    android:installLocation="preferExternal"
 5    android:versionCode="1"
-6    android:versionName="1.0" >
+6    android:versionName="0.1 Alfa" >
 7
 8    <uses-sdk
 9        android:minSdkVersion="22"
@@ -115,7 +115,7 @@
 63-->[:unityLibrary] C:\Users\Hasan\Documents\GitHub\IQArena\Game\IQArena\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\release\AndroidManifest.xml:51:13-44
 64            android:resizeableActivity="false"
 64-->[:unityLibrary] C:\Users\Hasan\Documents\GitHub\IQArena\Game\IQArena\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\release\AndroidManifest.xml:52:13-47
-65            android:screenOrientation="fullUser"
+65            android:screenOrientation="portrait"
 65-->[:unityLibrary] C:\Users\Hasan\Documents\GitHub\IQArena\Game\IQArena\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\release\AndroidManifest.xml:53:13-49
 66            android:theme="@style/UnityThemeSelector" >
 66-->[:unityLibrary] C:\Users\Hasan\Documents\GitHub\IQArena\Game\IQArena\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\release\AndroidManifest.xml:54:13-54
