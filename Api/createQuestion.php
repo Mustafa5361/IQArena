@@ -11,24 +11,28 @@ class createQuestion
         $this -> db = new dbConnection();
     }
 
-    function createQuestion($question)
+    function createQuestion($unit, $question, $answerA, $answerB, $answerC, $answerD, $currentAnswer, $difficultyLevel)
     {
-        
-        $unit = $this -> db -> insert("unit",$question[0]);
-        
-        unset($question[0]);
-
-        foreach($question  as $kay => $value)
-        {
-            
-            array_push($value, ["unit" => $unit]);
-            $this -> db -> insert("question", $question);
-
-        }
+        $this -> db -> fetch("SELECT unitID FROM unit where unitName = :unitName",
+        [
+            "unitName" => $unit 
+        ]);
+        $this -> db -> insert("question", 
+        [
+            "question" => $question,
+            "answerA" => $answerA,
+            "answerB" => $answerB,
+            "answerC" => $answerC,
+            "answerD" => $answerD,
+            "currentAnswer" => $currentAnswer,
+            "difficultyLevel" => $difficultyLevel,
+        ]    
+        );
 
         return true;
 
     }
+    
 
     function selectRandomQuestion()
     {
