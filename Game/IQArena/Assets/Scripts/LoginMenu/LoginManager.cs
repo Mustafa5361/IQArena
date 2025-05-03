@@ -18,14 +18,75 @@ public class LoginManager : MonoBehaviour
 
 
     [SerializeField] private Text usernameLogin;
-    [SerializeField] private Text passwordLogin;
+    [SerializeField] private InputField passwordLogin;
 
     [SerializeField] private Text mailSignIn;
     [SerializeField] private Text usernameSignIn;
-    [SerializeField] private Text passwordSignIn;
-    [SerializeField] private Text passwordControlSignIn;
+    [SerializeField] private InputField passwordSignIn;
+    [SerializeField] private InputField passwordControlSignIn;
+    [SerializeField] private InputField passwordConfirmationInput;
+    [SerializeField] private InputField passworCondirmationnRepead;
 
     [SerializeField] private Text ActivationCodeTxt;
+
+    private bool isPasswordVisible = false;
+    private bool isPasswordSignInVisible = false;
+    private bool isPasswordControlVisible = false;
+    private bool isPasswordConfirmationVisible = false;
+    private bool isPassworCondirmationnVisible = false;
+
+    public void TogglePasswordVisibility()
+    {
+        isPasswordVisible = !isPasswordVisible;
+
+        if (isPasswordVisible)
+            passwordLogin.contentType = InputField.ContentType.Standard;
+        else
+            passwordLogin.contentType = InputField.ContentType.Password;
+
+        passwordLogin.ForceLabelUpdate();
+    }
+    public void TogglePasswordSignInVisibility()
+    {
+        isPasswordSignInVisible = !isPasswordSignInVisible;
+        isPasswordControlVisible = !isPasswordControlVisible;
+
+        if (isPasswordSignInVisible  && isPasswordControlVisible)
+        {
+            passwordSignIn.contentType = InputField.ContentType.Standard;
+            passwordControlSignIn.contentType = InputField.ContentType.Standard;
+        }
+        else
+        {
+            passwordSignIn.contentType = InputField.ContentType.Password;
+            passwordControlSignIn.contentType = InputField.ContentType.Password;
+        }
+        passwordSignIn.ForceLabelUpdate();
+        passwordControlSignIn.ForceLabelUpdate();
+    }
+   
+    public void TogglePasswordConfirmationVisibility()
+    {
+        isPasswordConfirmationVisible = !isPasswordConfirmationVisible;
+        isPassworCondirmationnVisible = !isPassworCondirmationnVisible;
+
+        if (isPasswordConfirmationVisible && isPassworCondirmationnVisible)
+        {
+            passwordConfirmationInput.contentType = InputField.ContentType.Standard;
+            passworCondirmationnRepead.contentType = InputField.ContentType.Standard;
+        }
+        else
+        {
+            passwordConfirmationInput.contentType = InputField.ContentType.Password;
+            passworCondirmationnRepead.contentType = InputField.ContentType.Password;
+        }
+
+        passwordConfirmationInput.ForceLabelUpdate();
+        passworCondirmationnRepead.ForceLabelUpdate();
+    }
+    
+
+
 
     public void Login()
     {

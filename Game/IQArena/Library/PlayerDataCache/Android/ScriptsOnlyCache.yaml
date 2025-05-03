@@ -40,10 +40,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
-    - TMPro.TMP_Settings
-    - TMPro.TMP_SpriteAsset
-    - TMPro.TMP_StyleSheet
-    - TMPro.TMP_SubMeshUI
     - TMPro.TextMeshProUGUI
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
@@ -63,7 +59,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.InputField
-    - UnityEngine.UI.LayoutElement
     - UnityEngine.UI.Mask
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Text
@@ -165,6 +160,9 @@ ScriptsOnlyBuild:
     methodName: PasswordResetPanelOpen
   - assembly: Assembly-CSharp
     fullTypeName: LoginManager
+    methodName: TogglePasswordSignInVisibility
+  - assembly: Assembly-CSharp
+    fullTypeName: LoginManager
     methodName: LogingeriPanelOpen
   - assembly: Assembly-CSharp
     fullTypeName: LoginManager
@@ -178,6 +176,12 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: LoginManager
     methodName: ActivationControlPanelOpen
+  - assembly: Assembly-CSharp
+    fullTypeName: LoginManager
+    methodName: TogglePasswordConfirmationVisibility
+  - assembly: Assembly-CSharp
+    fullTypeName: LoginManager
+    methodName: TogglePasswordVisibility
   - assembly: Assembly-CSharp
     fullTypeName: LoginManager
     methodName: LogingeriPanelOpen
@@ -203,21 +207,21 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 16632}
+      Script: {instanceID: 16634}
     - Class: 114
-      Script: {instanceID: 16684}
+      Script: {instanceID: 16686}
     - Class: 114
-      Script: {instanceID: 17940}
+      Script: {instanceID: 17942}
     - Class: 114
-      Script: {instanceID: 18200}
+      Script: {instanceID: 18202}
     - Class: 114
-      Script: {instanceID: 18566}
+      Script: {instanceID: 18568}
     - Class: 114
-      Script: {instanceID: 21828}
+      Script: {instanceID: 21830}
     - Class: 114
-      Script: {instanceID: 22466}
+      Script: {instanceID: 22468}
     - Class: 114
-      Script: {instanceID: 24320}
+      Script: {instanceID: 24322}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -252,29 +256,29 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 16632}
+      Script: {instanceID: 16634}
     - Class: 114
-      Script: {instanceID: 16684}
+      Script: {instanceID: 16686}
     - Class: 114
-      Script: {instanceID: 17940}
+      Script: {instanceID: 17942}
     - Class: 114
-      Script: {instanceID: 18200}
+      Script: {instanceID: 18202}
     - Class: 114
-      Script: {instanceID: 18256}
+      Script: {instanceID: 18258}
     - Class: 114
-      Script: {instanceID: 18566}
+      Script: {instanceID: 18568}
     - Class: 114
-      Script: {instanceID: 20940}
+      Script: {instanceID: 20942}
     - Class: 114
-      Script: {instanceID: 21108}
+      Script: {instanceID: 21110}
     - Class: 114
-      Script: {instanceID: 21828}
+      Script: {instanceID: 21830}
     - Class: 114
-      Script: {instanceID: 22052}
+      Script: {instanceID: 22054}
     - Class: 114
-      Script: {instanceID: 22466}
+      Script: {instanceID: 22468}
     - Class: 114
-      Script: {instanceID: 23982}
+      Script: {instanceID: 23984}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -311,41 +315,41 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 16632}
+      Script: {instanceID: 16634}
     - Class: 114
-      Script: {instanceID: 16684}
+      Script: {instanceID: 16686}
     - Class: 114
-      Script: {instanceID: 17408}
+      Script: {instanceID: 17410}
     - Class: 114
-      Script: {instanceID: 17940}
+      Script: {instanceID: 17942}
     - Class: 114
-      Script: {instanceID: 18200}
+      Script: {instanceID: 18202}
     - Class: 114
-      Script: {instanceID: 18566}
+      Script: {instanceID: 18568}
     - Class: 114
-      Script: {instanceID: 18896}
+      Script: {instanceID: 18898}
     - Class: 114
-      Script: {instanceID: 19532}
+      Script: {instanceID: 19534}
     - Class: 114
-      Script: {instanceID: 19706}
+      Script: {instanceID: 19708}
     - Class: 114
-      Script: {instanceID: 19848}
+      Script: {instanceID: 19850}
     - Class: 114
-      Script: {instanceID: 20028}
+      Script: {instanceID: 20030}
     - Class: 114
-      Script: {instanceID: 20174}
+      Script: {instanceID: 20176}
     - Class: 114
-      Script: {instanceID: 21108}
+      Script: {instanceID: 21110}
     - Class: 114
-      Script: {instanceID: 21828}
+      Script: {instanceID: 21830}
     - Class: 114
-      Script: {instanceID: 22466}
+      Script: {instanceID: 22468}
     - Class: 114
-      Script: {instanceID: 22640}
+      Script: {instanceID: 22642}
     - Class: 114
-      Script: {instanceID: 23006}
+      Script: {instanceID: 23008}
     - Class: 114
-      Script: {instanceID: 23832}
+      Script: {instanceID: 23834}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1451,7 +1455,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: ecdc9f3cf0b0eef8b64a8739be4168da
+      Hash: e7d9ecf7851d042f6bdd1a7665b3f613
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: LoginManager

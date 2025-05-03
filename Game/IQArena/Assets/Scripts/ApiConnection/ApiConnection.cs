@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public static class ApiConnection
 {
 
-    private static string URL = "http://localhost/";
+    private static string URL = "http://localhost.com/";
 
 
     public static async void Connection<T>(string connection,T value, Action<T> GetData)

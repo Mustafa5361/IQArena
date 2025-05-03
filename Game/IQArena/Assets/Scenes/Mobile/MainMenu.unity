@@ -2361,7 +2361,7 @@ GameObject:
   - component: {fileID: 1054301093}
   - component: {fileID: 1054301092}
   m_Layer: 5
-  m_Name: ' ContinueText'
+  m_Name: CanceltText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2419,7 +2419,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Continue
+  m_Text: Cancel
 --- !u!222 &1054301093
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4198,7 +4198,7 @@ GameObject:
   - component: {fileID: 1812077363}
   - component: {fileID: 1812077362}
   m_Layer: 5
-  m_Name: ContinueButton
+  m_Name: CancelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -95,7 +95,7 @@
 51-->C:\Users\Hasan\Documents\GitHub\IQArena\Game\IQArena\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:16:148-179
 52            android:resizeableActivity="false"
 52-->C:\Users\Hasan\Documents\GitHub\IQArena\Game\IQArena\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:16:362-396
-53            android:screenOrientation="fullUser"
+53            android:screenOrientation="portrait"
 53-->C:\Users\Hasan\Documents\GitHub\IQArena\Game\IQArena\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:16:111-147
 54            android:theme="@style/UnityThemeSelector" >
 54-->C:\Users\Hasan\Documents\GitHub\IQArena\Game\IQArena\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:16:69-110
