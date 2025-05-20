@@ -28,6 +28,8 @@ public class MainMenuManager : MonoBehaviour
 
     public Text timeText;
 
+    Coroutine expection;
+
     public void SinglePlayerOpen()
     {
         SceneManager.LoadScene("Game");
@@ -36,7 +38,7 @@ public class MainMenuManager : MonoBehaviour
     public void matchExpectionmenuOpen()
     {
 
-        StartCoroutine(roomExpection());
+        expection = StartCoroutine(roomExpection());
         matchExpectionmenu.SetActive(true);
 
     }
@@ -80,6 +82,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void matchExpectionmenuClose()
     {
+        StopCoroutine(expection);
         matchExpectionmenu.SetActive(false);
         mainMenu.SetActive(true);
 
