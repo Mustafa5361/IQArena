@@ -15,8 +15,6 @@ public class LoginManager : MonoBehaviour
     [SerializeField] private GameObject activationControlPanel;
     [SerializeField] private GameObject logingeriPanel;
   
-
-
     [SerializeField] private Text usernameLogin;
     [SerializeField] private InputField passwordLogin;
 
@@ -222,17 +220,17 @@ public class LoginManager : MonoBehaviour
         menuPenel .SetActive(true) ;
     }
 
-    
-
-   
-
     void Start()
     {
         menuPenel.SetActive(true);
     }
 
-    void Update()
+    [ContextMenu("deneme")]
+    public void Deneme()
     {
-        
+        ApiConnection.Connection();
     }
+   
+
+
 }

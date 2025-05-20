@@ -7147,7 +7147,7 @@ MonoBehaviour:
   passwordSignIn: {fileID: 1871483256}
   passwordControlSignIn: {fileID: 1354191019}
   passwordConfirmationInput: {fileID: 227449936}
-  passworCondirmationnRepead: {fileID: 0}
+  passworCondirmationnRepead: {fileID: 572972464}
   ActivationCodeTxt: {fileID: 1053791917}
 --- !u!4 &1688896011
 Transform:

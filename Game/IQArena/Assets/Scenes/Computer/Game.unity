@@ -371,6 +371,11 @@ MonoBehaviour:
   Menu: {fileID: 1644103327}
   QuitMenu: {fileID: 2032596912}
   StartPanel: {fileID: 1863302800}
+  questionTxt: {fileID: 450321785}
+  aBtnTxt: {fileID: 836237573}
+  bBtnTxt: {fileID: 1544608281}
+  cBtnTxt: {fileID: 445584929}
+  dBtnTxt: {fileID: 1818587441}
 --- !u!1 &151233113
 GameObject:
   m_ObjectHideFlags: 0
@@ -4543,7 +4548,7 @@ GameObject:
   - component: {fileID: 1855046652}
   - component: {fileID: 1855046651}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: Question
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

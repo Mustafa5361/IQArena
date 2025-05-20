@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     */
     if(isset($value -> roomID))
     {
-        if (isset($value -> answer))
+        if ($value -> answer != "none")
         {
             
             //token uzerinden eşleşmedeki playerRoomID ye erişiyoruz.
@@ -206,7 +206,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             }
     
         } 
-        else
+        else // ilk soru
         {
             $question = $db -> fetch(
                 "SELECT q.questionID, q.question, q.answerA, q.answerB, q.answerC, q.answerD 
@@ -221,8 +221,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             echo json_encode($question);
         }
     }
-
-    
     else 
     { 
         // Eşleşme sistemi

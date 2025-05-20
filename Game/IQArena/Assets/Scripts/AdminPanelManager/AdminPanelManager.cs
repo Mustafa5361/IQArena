@@ -53,16 +53,4 @@ public class AdminPanelManager : MonoBehaviour
         SceneManager.LoadScene("Login");
     }
 
-  
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
