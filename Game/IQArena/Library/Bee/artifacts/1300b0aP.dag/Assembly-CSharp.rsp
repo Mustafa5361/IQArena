@@ -355,6 +355,7 @@
 "Assets/Scripts/AdminPanelManager/AdminPanelManager.cs"
 "Assets/Scripts/ApiConnection/ApiConnection.cs"
 "Assets/Scripts/ApiConnection/Communication.cs"
+"Assets/Scripts/ApiConnection/CustomCertificateHandler.cs"
 "Assets/Scripts/FileSystem/FileSystem.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/GameMenu/GameMenu.cs"

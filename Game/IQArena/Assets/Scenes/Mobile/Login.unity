@@ -3515,10 +3515,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -4771,8 +4771,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8, y: -560}
-  m_SizeDelta: {x: 800, y: 150}
+  m_AnchoredPosition: {x: 0, y: -560}
+  m_SizeDelta: {x: 850, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1004971460
 MonoBehaviour:
@@ -4817,14 +4817,14 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1004971461}
   m_TextComponent: {fileID: 701137471}
   m_Placeholder: {fileID: 2031279670}
-  m_ContentType: 0
+  m_ContentType: 6
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 7
   m_LineType: 0
   m_HideMobileInput: 1
-  m_CharacterValidation: 0
-  m_CharacterLimit: 0
+  m_CharacterValidation: 5
+  m_CharacterLimit: 200
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -5496,13 +5496,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1278075303}
   m_TextComponent: {fileID: 666517656}
   m_Placeholder: {fileID: 738122334}
-  m_ContentType: 5
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 6
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 1
-  m_CharacterValidation: 4
+  m_CharacterValidation: 0
   m_CharacterLimit: 0
   m_OnSubmit:
     m_PersistentCalls:
@@ -8255,13 +8255,14 @@ MonoBehaviour:
   logingeriPanel: {fileID: 1487639199}
   usernameLogin: {fileID: 666517656}
   passwordLogin: {fileID: 1621160607}
-  mailSignIn: {fileID: 0}
-  usernameSignIn: {fileID: 0}
+  mailSignIn: {fileID: 701137471}
+  usernameSignIn: {fileID: 1955162986}
   passwordSignIn: {fileID: 449339934}
   passwordControlSignIn: {fileID: 1873715171}
   passwordConfirmationInput: {fileID: 1342986732}
   passworCondirmationnRepead: {fileID: 955967472}
   ActivationCodeTxt: {fileID: 1475244523}
+  activationControlToggle: {fileID: 277852847}
 --- !u!4 &2136086307
 Transform:
   m_ObjectHideFlags: 0

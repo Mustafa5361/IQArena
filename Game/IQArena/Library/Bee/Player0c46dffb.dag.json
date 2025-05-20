@@ -375,7 +375,8 @@
         367,
         368,
         369,
-        370
+        370,
+        371
       ],
       "OverwriteOutputs": false,
       "DebugActionIndex": 0
@@ -9439,7 +9440,10 @@
       "Outputs": [],
       "ToBuildDependencies": [
         356,
-        358
+        358,
+        364,
+        365,
+        366
       ],
       "OverwriteOutputs": false,
       "DebugActionIndex": 357
@@ -9785,6 +9789,29 @@
       "DebugActionIndex": 366
     },
     {
+      "Annotation": "7z C:/Users/Hasan/Documents/GitHub/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/symbols.zip",
+      "DisplayName": "7z symbols",
+      "Action": "cd \"C:/Users/Hasan/Documents/GitHub/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/symbols\" && \"C:/Program Files/Unity/Hub/Editor/2022.3.10f1/Editor/Data/Tools/7z.exe\" a -tzip \"C:/Users/Hasan/Documents/GitHub/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/symbols.zip\" \"armeabi-v7a/libmain.so\" \"armeabi-v7a/libmonobdwgc-2.0.so\" \"armeabi-v7a/libunity.so\"",
+      "Inputs": [
+        "C:/Users/Hasan/Documents/GitHub/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/symbols/armeabi-v7a/libmain.so",
+        "C:/Users/Hasan/Documents/GitHub/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/symbols/armeabi-v7a/libmonobdwgc-2.0.so",
+        "C:/Users/Hasan/Documents/GitHub/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/symbols/armeabi-v7a/libunity.so",
+        "C:/Program Files/Unity/Hub/Editor/2022.3.10f1/Editor/Data/Tools/7z.exe"
+      ],
+      "Outputs": [
+        "C:/Users/Hasan/Documents/GitHub/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/symbols.zip"
+      ],
+      "ToBuildDependencies": [
+        364,
+        365,
+        366
+      ],
+      "OverwriteOutputs": false,
+      "AllowUnexpectedOutput": true,
+      "Env": [],
+      "DebugActionIndex": 367
+    },
+    {
       "Annotation": "WriteText Library/Bee/artifacts/csharpactions/unity_app_guid_jbvu.info",
       "DisplayName": "Writing unity_app_guid_jbvu.info",
       "ActionType": "WriteFile",
@@ -9795,7 +9822,7 @@
       "Outputs": [
         "Library/Bee/artifacts/csharpactions/unity_app_guid_jbvu.info"
       ],
-      "DebugActionIndex": 367
+      "DebugActionIndex": 368
     },
     {
       "Annotation": "GuidGenerator C:/Users/Hasan/Documents/GitHub/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/assets/bin/Data/unity_app_guid",
@@ -9928,12 +9955,12 @@
       ],
       "ToBuildDependencies": [
         5,
-        367
+        368
       ],
       "OverwriteOutputs": false,
       "AllowUnexpectedOutput": true,
       "Env": [],
-      "DebugActionIndex": 368
+      "DebugActionIndex": 369
     },
     {
       "Annotation": "WriteText C:/Users/Hasan/Documents/GitHub/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/resources/META-INF/com.android.games.engine.build_fingerprint",
@@ -9946,7 +9973,7 @@
       "Outputs": [
         "C:/Users/Hasan/Documents/GitHub/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/resources/META-INF/com.android.games.engine.build_fingerprint"
       ],
-      "DebugActionIndex": 369
+      "DebugActionIndex": 370
     },
     {
       "Annotation": "Player",
@@ -10205,11 +10232,15 @@
         360,
         361,
         363,
-        368,
-        369
+        364,
+        365,
+        366,
+        367,
+        369,
+        370
       ],
       "OverwriteOutputs": false,
-      "DebugActionIndex": 370
+      "DebugActionIndex": 371
     }
   ],
   "FileSignatures": [
@@ -10525,7 +10556,7 @@
         "NamedNodes": {
           "all_tundra_nodes": 0,
           "SourceBuildPlayerFiles": 357,
-          "Player": 370
+          "Player": 371
         }
 ,  "DefaultNodes": [
     0

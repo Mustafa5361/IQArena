@@ -7149,6 +7149,7 @@ MonoBehaviour:
   passwordConfirmationInput: {fileID: 227449936}
   passworCondirmationnRepead: {fileID: 572972464}
   ActivationCodeTxt: {fileID: 1053791917}
+  activationControlToggle: {fileID: 1020752324}
 --- !u!4 &1688896011
 Transform:
   m_ObjectHideFlags: 0
@@ -7805,13 +7806,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1919077723}
   m_TextComponent: {fileID: 339740789}
   m_Placeholder: {fileID: 319765590}
-  m_ContentType: 9
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 6
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 4
+  m_CharacterValidation: 0
   m_CharacterLimit: 0
   m_OnSubmit:
     m_PersistentCalls:
@@ -7963,7 +7964,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2005222695
 RectTransform:
   m_ObjectHideFlags: 0

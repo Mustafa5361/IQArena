@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LoginManager : MonoBehaviour
 {
-
+   
     [SerializeField] private GameObject menuPenel;
     [SerializeField] private GameObject loginPanel;
     [SerializeField] private GameObject signinPanel;
@@ -26,6 +26,8 @@ public class LoginManager : MonoBehaviour
     [SerializeField] private InputField passworCondirmationnRepead;
 
     [SerializeField] private Text ActivationCodeTxt;
+
+    [SerializeField] private Toggle activationControlToggle;
 
     private bool isPasswordVisible = false;
     private bool isPasswordSignInVisible = false;
@@ -91,13 +93,13 @@ public class LoginManager : MonoBehaviour
 
         if (usernameLogin.text != "" && passwordLogin.text != "")
         {
-
+            Debug.Log(usernameLogin.text + " / " + passwordLogin.text);
             ApiConnection.Connection<User, LoginSetData>("login.php", new User("", usernameLogin.text, passwordLogin.text), (value) =>
             {
 
                 if (value.success)
                 {
-                    if (true) // hesabý kaydet açýkmý
+                    if (activationControlToggle.isOn) // hesabý kaydet açýkmý
                     {
 
                         FileSystem.JsonSave("Token", value.token);
