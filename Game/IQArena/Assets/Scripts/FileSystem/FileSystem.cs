@@ -32,6 +32,7 @@ public static class FileSystem
             return;
         }
 
+        return;
         throw new System.Exception("File oluþturulamadý.");
 
     }

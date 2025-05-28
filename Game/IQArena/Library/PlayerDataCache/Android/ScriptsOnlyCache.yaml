@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - ArrangementData
+    - GameMenu
     - LoginManager
     - MainMenuManager
     - MatchHistory
@@ -39,9 +40,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
-    - TMPro.TMP_Settings
-    - TMPro.TMP_SpriteAsset
-    - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
@@ -126,6 +124,9 @@ ScriptsOnlyBuild:
     methodName: LogingeriPanelOpen
   - assembly: Assembly-CSharp
     fullTypeName: LoginManager
+    methodName: CloseTheGame
+  - assembly: Assembly-CSharp
+    fullTypeName: LoginManager
     methodName: SigninPanelOpen
   - assembly: Assembly-CSharp
     fullTypeName: LoginManager
@@ -141,6 +142,9 @@ ScriptsOnlyBuild:
     methodName: TogglePasswordConfirmationVisibility
   - assembly: Assembly-CSharp
     fullTypeName: LoginManager
+    methodName: QuitCancelMenuOpen
+  - assembly: Assembly-CSharp
+    fullTypeName: LoginManager
     methodName: TogglePasswordVisibility
   - assembly: Assembly-CSharp
     fullTypeName: LoginManager
@@ -148,6 +152,9 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: LoginManager
     methodName: Login
+  - assembly: Assembly-CSharp
+    fullTypeName: LoginManager
+    methodName: ExitMenuOpen
   - assembly: Assembly-CSharp
     fullTypeName: MainMenuManager
     methodName: ProfileMenuOpen
@@ -181,7 +188,71 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: MainMenuManager
     methodName: QuitCancelMenuOpen
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
+    methodName: MainMenuOpen
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
+    methodName: MainMenuOpen
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
+    methodName: QuitPanel
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
+    methodName: QuitPanelClose
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
+    methodName: MainMenuOpen
   sceneClasses:
+    Assets/Scenes/Mobile/Game.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 16634}
+    - Class: 114
+      Script: {instanceID: 16686}
+    - Class: 114
+      Script: {instanceID: 17944}
+    - Class: 114
+      Script: {instanceID: 18204}
+    - Class: 114
+      Script: {instanceID: 18570}
+    - Class: 114
+      Script: {instanceID: 21832}
+    - Class: 114
+      Script: {instanceID: 22470}
+    - Class: 114
+      Script: {instanceID: 24326}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
     Assets/Scenes/Mobile/Login.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -232,7 +303,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 22470}
     - Class: 114
-      Script: {instanceID: 23986}
+      Script: {instanceID: 23988}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -291,7 +362,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 23010}
     - Class: 114
-      Script: {instanceID: 23836}
+      Script: {instanceID: 23838}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1397,7 +1468,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: be3ff101b0ea3e01f5ee575b941728f6
+      Hash: 30ae47c73a5e9b76c0796f3b85bce0a0
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: LoginManager
@@ -1549,4 +1620,5 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Mobile/Login.unity
   - Assets/Scenes/Mobile/MainMenu.unity
-  playerPath: C:/Users/Hasan/Desktop/IQArenaMobile/IQ Arena.apk
+  - Assets/Scenes/Mobile/Game.unity
+  playerPath: "C:/Users/hsnak/OneDrive/Masa\xFCst\xFC/HasanPc/IQArenaMobile/IQArena.apk"

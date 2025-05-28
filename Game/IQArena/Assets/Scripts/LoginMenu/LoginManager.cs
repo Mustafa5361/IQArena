@@ -14,7 +14,8 @@ public class LoginManager : MonoBehaviour
     [SerializeField] private GameObject passwordConfirmationPanel;
     [SerializeField] private GameObject activationControlPanel;
     [SerializeField] private GameObject logingeriPanel;
-  
+    [SerializeField] private GameObject quitMenu;
+
     [SerializeField] private Text usernameLogin;
     [SerializeField] private InputField passwordLogin;
 
@@ -232,7 +233,22 @@ public class LoginManager : MonoBehaviour
     {
         ApiConnection.Connection();
     }
-   
+    public void ExitMenuOpen()
+    {
+        quitMenu.SetActive(true);
+    }
+    public void QuitCancelMenuOpen()
+    {
+        quitMenu.SetActive(false);
+        menuPenel.SetActive(true);
+    }
+
+    public void CloseTheGame()
+    {
+        Application.Quit();
+    }
+
+
 
 
 }

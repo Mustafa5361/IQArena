@@ -1,10 +1,26 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Hasan\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\merged_res\\debug\\values-v30_values-v30.arsc.flat",
+            "outputFile": "C:\\Users\\hsnak\\OneDrive\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\merged_res\\debug\\values-v21_values-v21.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\Users\\Hasan\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\build\\intermediates\\packaged_res\\debug\\values-v30\\values-v30.xml",
+                    "source": "C:\\Users\\hsnak\\OneDrive\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\build\\intermediates\\packaged_res\\debug\\values-v21\\values-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "3",
+                        "endColumns": "8",
+                        "endOffsets": "154"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\hsnak\\OneDrive\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\merged_res\\debug\\values-v30_values-v30.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\hsnak\\OneDrive\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\build\\intermediates\\packaged_res\\debug\\values-v30\\values-v30.xml",
                     "from": {
                         "startLines": "2,3,4,5,6",
                         "startColumns": "4,4,4,4,4",
@@ -16,10 +32,42 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\Hasan\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\merged_res\\debug\\values_values.arsc.flat",
+            "outputFile": "C:\\Users\\hsnak\\OneDrive\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\merged_res\\debug\\values-v31_values-v31.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\Users\\Hasan\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\build\\intermediates\\packaged_res\\debug\\values\\values.xml",
+                    "source": "C:\\Users\\hsnak\\OneDrive\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\build\\intermediates\\packaged_res\\debug\\values-v31\\values-v31.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "8",
+                        "endColumns": "10",
+                        "endOffsets": "614"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\hsnak\\OneDrive\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\merged_res\\debug\\values-v28_values-v28.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\hsnak\\OneDrive\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\build\\intermediates\\packaged_res\\debug\\values-v28\\values-v28.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "8",
+                        "endOffsets": "229"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\hsnak\\OneDrive\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\merged_res\\debug\\values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\hsnak\\OneDrive\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\build\\intermediates\\packaged_res\\debug\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,11,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -38,7 +86,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Hasan\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\src\\main\\res\\values\\strings.xml",
+                    "source": "C:\\Users\\hsnak\\OneDrive\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "2,2",
@@ -52,54 +100,6 @@
                         "startOffsets": "424,469",
                         "endColumns": "44,67",
                         "endOffsets": "464,532"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "C:\\Users\\Hasan\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\merged_res\\debug\\values-v21_values-v21.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\Hasan\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\build\\intermediates\\packaged_res\\debug\\values-v21\\values-v21.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "3",
-                        "endColumns": "8",
-                        "endOffsets": "154"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "C:\\Users\\Hasan\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\merged_res\\debug\\values-v28_values-v28.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\Hasan\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\build\\intermediates\\packaged_res\\debug\\values-v28\\values-v28.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "4",
-                        "endColumns": "8",
-                        "endOffsets": "229"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "C:\\Users\\Hasan\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\merged_res\\debug\\values-v31_values-v31.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\Hasan\\Documents\\GitHub\\IQArena\\Game\\IQArena\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\build\\intermediates\\packaged_res\\debug\\values-v31\\values-v31.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "8",
-                        "endColumns": "10",
-                        "endOffsets": "614"
                     }
                 }
             ]

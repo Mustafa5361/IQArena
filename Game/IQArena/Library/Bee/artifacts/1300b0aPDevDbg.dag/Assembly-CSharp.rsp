@@ -376,6 +376,7 @@
 "Assets/Scripts/MainMenu/PlayerHistory.cs"
 "Assets/Scripts/MainMenu/ReadRoom.cs"
 "Assets/Scripts/MainMenu/WriteToken.cs"
+"Assets/Scripts/PlayerInformation/GetRank.cs"
 -langversion:9.0
 
 /deterministic
