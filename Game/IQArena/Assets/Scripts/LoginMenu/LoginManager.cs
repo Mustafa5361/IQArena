@@ -163,7 +163,7 @@ public class LoginManager : MonoBehaviour
         if (ActivationCodeTxt.text.Trim().Length == 6)
         {
 
-            ApiConnection.Connection<SendToActivalionCode, LoginSetData>("login.php", new SendToActivalionCode(GameManager.token,ActivationCodeTxt.text.Trim(), false), (value) =>
+            ApiConnection.Connection<SendToActivalionCode, LoginSetData>("login.php", new SendToActivalionCode(GameManager.Token,ActivationCodeTxt.text.Trim(), false), (value) =>
             {
 
                 if (value.success)

@@ -1,11 +1,11 @@
 <?php
 
-class dbConnection 
+class dbConnection  
 {
     private $host = "localhost";
     private $dbName = "iqarenadb";
-    private $username = "root";
-    private $password = "";
+    private $username = "iqarena";
+    private $password = "1Fs6tnJfFrO79";
     private $conn;
 
     public function __construct() 

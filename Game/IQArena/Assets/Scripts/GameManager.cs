@@ -7,7 +7,15 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-    public static string token { get; private set; }
+    private static string token;
+
+    public static string Token
+    {
+        get 
+        {
+            return token; 
+        }
+    }
 
     public static void SetToken(string token)
     {

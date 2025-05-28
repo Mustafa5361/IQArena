@@ -37,6 +37,11 @@ class createQuestion
     function selectRandomQuestion(): array
     {
 
+        $query = $this -> db -> fetch("select count(*) as toplam from question ",[]);
+
+        if ($query["toplam"] < 10)
+            exit("yeterince soru yok");
+
         $difficultyLevel = 0;
         $questions = [];
 

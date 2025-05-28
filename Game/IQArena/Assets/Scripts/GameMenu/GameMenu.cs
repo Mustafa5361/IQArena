@@ -19,7 +19,7 @@ public class GameMenu : MonoBehaviour
 
     private static int roomID;
 
-    Question question;
+    Question question = new Question(-1);
 
     private void Start()
     {
@@ -59,7 +59,7 @@ public class GameMenu : MonoBehaviour
     public void ApiGetQuestion(Answer answer)
     {
 
-        ApiConnection.Connection<WriteQuestion, Question>("roomControler.php", new WriteQuestion(GameManager.token, question.questionID, answer, roomID), QuestionUpdate);
+        ApiConnection.Connection<WriteQuestion, Question>("roomControler.php", new WriteQuestion(GameManager.Token, question.questionID, answer, roomID), QuestionUpdate);
 
     }
 

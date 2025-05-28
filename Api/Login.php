@@ -151,7 +151,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
             $sorgu = ["username" => $value -> username, "password" => $value -> password, "isDeleted" => false];
 
-            $loginData = $db->fetch("select playerID From player where username = :username and password = :password and isDeleted = :isDeleted", $sorgu);
+            $loginData = $db->fetch(
+                "select playerID From player 
+                where username = :username and 
+                password = :password and 
+                isDeleted = :isDeleted", $sorgu);
             
             if($loginData == false)
             {

@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             $time = time() - $delay;
     
             //ne kadar sürede cevap verdiği ve cevabı tutuluyor.
-            $db -> insert("answer",
+            $db -> insert("answers",
             [
                 "roomplayerID" => $roomPlayerID,
                 "matchquestionID" => $matchQuestionID,
@@ -102,10 +102,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     
             $question = $db ->  fetch(
                 "SELECT q.questionID, q.question, q.answerA, q.answerB, q.answerC, q.answerD 
-                FROM question q INNER JOIN matchquestion m 
+                FROM question q INNER JOIN matchquestions m 
                 ON q.questionID=m.questionID 
                 where m.roomID =  :roomID 
-                AND m.questionIndex = ( SELECT questionIndex FROM matchquestion
+                AND m.questionIndex = ( SELECT questionIndex FROM matchquestions
                 where matchquestionID = :matchquestionID ) + 1",
                 [
                     "matchquestionID" => $matchQuestionID,
@@ -117,11 +117,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             {
                 echo json_encode($question);
             }
-            else 
+            else // oyun bitişi
             {
     
                 $answers = $db -> fetchAll(
-                    "SELECT matchquestionID, answer, answertime from answer 
+                    "SELECT matchquestionID, answer, answertime from answers 
                     where roomplayerID = :roomplayerID ",
                     [
                         "roomplayerID" => $roomPlayerID
@@ -134,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 {
     
                     $correctAnswer =  $db -> fetch(
-                        "SELECT q.difficultyLevel q.answer from matchquestion m INNER JOIN question q 
+                        "SELECT q.difficultyLevel q.answer from matchquestions m INNER JOIN question q 
                         ON q.questionID = m.questionID 
                         where  m.matchquestionID = :matchquestionID",
                         [
@@ -164,7 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 $pointControl = $db -> fetch(
                     "SELECT rp.point, rp.playerID FROM roomplayer rp inner join encounterroom ect
                     ON rp.roomID = ect.roomID
-                    where roomPlayerID != :roomplayerID and roomID = :roomID
+                    where roomPlayerID != :roomplayerID and rp.roomID = :roomID
                     ",
                     [
                         "roomplayerID" => $roomPlayerID,
@@ -210,24 +210,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             $question = $db -> fetch(
                 "SELECT q.questionID, q.question, q.answerA, q.answerB, q.answerC, q.answerD 
-                FROM question q INNER JOIN matchquestion m 
+                FROM question q INNER JOIN matchquestions m 
                 ON q.questionID=m.questionID 
-                where m.roomID =  :roomID 
+                where m.roomID = :roomID 
                 AND m.questionIndex = 0",
                 [
                     "roomID" => $value -> roomID
                 ]
             );
+
             echo json_encode($question);
+            
         }
     }
     else 
     { 
+
+        /*
+        
+            metch(
+                playerID
+                cup
+                minCup
+                maxCup
+                startTime
+                time
+            );
+
+        
+        */
+
         // Eşleşme sistemi
         // Eşleşme sisteminde uzun süreli haber kesileni eşleşmeden çıkarma
         $db -> query(
-            "DELETE from match 
-            where time > :time",
+            "DELETE from `match`
+            where `time` < :time",
             [
                 "time" => (time() - 4)
             ]
@@ -237,8 +254,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $query = $db->fetch(
             "SELECT player.playerID, player.cup
             FROM player
-            INNER JOIN tokens ON tokens.playerID = player.playerID
-            WHERE tokens.token = :token",
+            INNER JOIN tokens ON tokens.playerID = player.playerID WHERE tokens.token = :token",
             ["token" => $value->token]
         );
 
@@ -249,7 +265,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         // 2. Oyuncu daha önce eşleşmiş mi?
         $roomControl = $db->fetch(
             "SELECT ect.roomID FROM encounterroom ect inner join roomplayer rp on ect.roomID = rp.roomID
-            where rp.roomplayerID =  :playerID and ect.status = 'matched'",
+            where rp.playerID = :playerID and ect.status = 'matched'",
             ["playerID" => $query["playerID"]]
         );
 
@@ -289,7 +305,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
         if ($queryMatch != false) {
 
-            //eencounterrooma oda oluşturma
+            //encounterrooma oda oluşturma
             $roomID = $db->insert("encounterroom", 
             [
                 "status" => 'matched'
@@ -311,17 +327,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 "delay" => time()
             ]);
             
-            $createQuestion = new createQuestion();
-            $questions = $createQuestion->selectRandomQuestion();
-
-            foreach ($questions as $key => $question) {
-                $db->insert("matchquestions", [
-                    "roomID" => $roomID,
-                    "questionID" => $question,
-                    "questionIndex" => $key
-                ]);
-            }
-
             // Eşleşen iki oyuncuyu `match` tablosundan siliyoruz
             $db->query(
                 "DELETE FROM `match`
@@ -332,20 +337,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 ]
             );
 
-            exit(json_encode(["success" => true, "roomID" => $roomID]));
+            $createQuestion = new createQuestion();
+            $questions = $createQuestion->selectRandomQuestion();
+
+            foreach ($questions as $key => $question) {
+                $db->insert("matchquestions", [
+                    "roomID" => $roomID,
+                    "questionID" => $question["questionID"],
+                    "questionIndex" => $key
+                ]);
+            }
+
+            echo(json_encode(["success" => true, "roomID" => $roomID]));
+            
         } else {
+
             // Rakip bulunamadıysa `match` tablosuna kayıt veya güncelleme
-            if ($queryControl != false) {
+            if ($queryControl != false) 
+            {
                 $db->query(
                     "UPDATE `match`
-                    SET time = :time
+                    SET `time` = :time
                     WHERE playerID = :playerID",
                     [
                         "time" => time(),
                         "playerID" => $query["playerID"]
                     ]
                 );
-            } else {
+            } else 
+            {
                 $db->insert("`match`", [
                     "playerID" => $query["playerID"],
                     "startTime" => time(),
@@ -354,7 +374,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 ]);
             }
 
-            exit(json_encode(["success" => false, "roomID" => ""]));
+            echo(json_encode(["success" => false, "roomID" => ""]));
+
         }
 
     }

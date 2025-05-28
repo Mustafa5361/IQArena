@@ -4,11 +4,35 @@ using UnityEngine;
 
 public static class FileSystem
 {
+
+    private static bool FileControl(string value)
+    {
+        string folderPath = Application.dataPath + "/Saves";
+
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public static void JsonSave(string name, object Value)
     {
 
-        string jsonFormat = JsonUtility.ToJson(Value, true);
-        File.WriteAllText(Application.dataPath + "/Saves/" + name + ".json", jsonFormat);
+        string folderPath = Application.dataPath + "/Saves/";
+
+        if (FileControl(folderPath))
+        {
+            string jsonFormat = JsonUtility.ToJson(Value, true);
+            File.WriteAllText(folderPath + name + ".json", jsonFormat);
+            return;
+        }
+
+        throw new System.Exception("File oluþturulamadý.");
 
     }
 

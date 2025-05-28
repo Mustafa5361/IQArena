@@ -12,7 +12,7 @@ public class TokenKontrol : MonoBehaviour
         {
             GameManager.SetToken(FileSystem.JsonLoad<string>("Token"));
 
-            ApiConnection.Connection<LoginGetData>("", new LoginGetData(true, GameManager.token), (value)=>
+            ApiConnection.Connection<LoginGetData>("", new LoginGetData(true, GameManager.Token), (value)=>
             {
 
             });

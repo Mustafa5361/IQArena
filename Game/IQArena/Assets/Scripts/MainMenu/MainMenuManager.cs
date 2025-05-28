@@ -57,7 +57,7 @@ public class MainMenuManager : MonoBehaviour
             if (elapsedTime % 3 == 0)
             {
                
-                ApiConnection.Connection<WriteToken, ReadRoom>("roomControler.php", new WriteToken(GameManager.token), (value) =>
+                ApiConnection.Connection<WriteToken, ReadRoom>("roomControler.php", new WriteToken(GameManager.Token), (value) =>
                 {
 
                     if (value.success)
@@ -156,24 +156,28 @@ public class MainMenuManager : MonoBehaviour
         mainMenu.SetActive(false);
         float height = 0;
 
-        foreach(PlayerCup playerCup in this.PlayerRank)
+        ApiConnection.Connection<string, PlayerRank>("playerInformation.php", "", (value) =>
         {
+            foreach (var playerCup in value.ranks)
+            {
 
-            GameObject go = Instantiate(RankPlayerPlanel, RankPanel.transform);
+                GameObject go = Instantiate(RankPlayerPlanel, RankPanel.transform);
 
-            go.GetComponent<ArrangementData>().SetData(playerCup.username, playerCup.cup);
+                go.GetComponent<ArrangementData>().SetData(playerCup.username, playerCup.cup);
 
-            PlayerRankObjekt.Add(go);
+                PlayerRankObjekt.Add(go);
 
-            height += (go.GetComponent<RectTransform>().sizeDelta.y + 31);
+                height += (go.GetComponent<RectTransform>().sizeDelta.y + 31);
 
-        }
+            }
+        });
 
         RectTransform rt = RankPanel.GetComponent<RectTransform>();
         Vector2 sizeDelta = rt.sizeDelta;
         sizeDelta.y = height;
         rt.sizeDelta = sizeDelta;
         Ranknmenu.SetActive(true);
+
     }
 
     public void RanKMenuClose()
