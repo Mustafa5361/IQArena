@@ -1,17 +1,22 @@
 public class Question
 {
-    public int questionID {  get; set; }
-    public string question {  get; set; }
-    public string answerA { get; set; }
-    public string answerB { get; set; }
-    public string answerC { get; set; }
-    public string answerD { get; set; }
+    public int questionID;
+    public string question;
+    public string answerA;
+    public string answerB;
+    public string answerC;
+    public string answerD;
 
     public Question() { }
 
     public Question(int questionID)
     {
         this.questionID = questionID;
+    }
+
+    public override string ToString()
+    {
+        return questionID + " / " + question;
     }
 
 }

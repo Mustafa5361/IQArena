@@ -64,6 +64,7 @@ public class MainMenuManager : MonoBehaviour
                     {
 
                         GameMenu.SetRoomID(value.roomID);
+                        GameMenu.SetRoomID(value.roomID);
                         SceneManager.LoadScene("Game");
 
                     }

@@ -26,8 +26,5 @@ class cupCalculation
 
     }
 
-
-
-
 }
 ?>

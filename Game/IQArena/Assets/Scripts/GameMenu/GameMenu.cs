@@ -59,7 +59,11 @@ public class GameMenu : MonoBehaviour
     public void ApiGetQuestion(Answer answer)
     {
 
-        ApiConnection.Connection<WriteQuestion, Question>("roomControler.php", new WriteQuestion(GameManager.Token, question.questionID, answer, roomID), QuestionUpdate);
+        var writeQuestion = new WriteQuestion(GameManager.Token, question.questionID, AnswerToString(answer), roomID);
+
+        Debug.Log(writeQuestion.ToString());
+
+        ApiConnection.Connection<WriteQuestion, Question>("roomControler.php", writeQuestion, QuestionUpdate);
 
     }
 
@@ -74,6 +78,8 @@ public class GameMenu : MonoBehaviour
 
     void MenuUpdate(Question question)
     {
+
+        Debug.Log(question.ToString());
 
         questionTxt.text = question.question;
         aBtnTxt.text = question.answerA;
@@ -99,6 +105,25 @@ public class GameMenu : MonoBehaviour
             default:
                 return Answer.None;
 
+        }
+
+    }
+
+    private string AnswerToString(Answer answer)
+    {
+
+        switch (answer)
+        {
+            case Answer.A:
+                return "A";
+            case Answer.B:
+                return "B";
+            case Answer.C:
+                return "C";
+            case Answer.D:
+                return "D";
+            default:
+                return "None";
         }
 
     }

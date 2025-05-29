@@ -248,7 +248,4 @@ public class LoginManager : MonoBehaviour
         Application.Quit();
     }
 
-
-
-
 }

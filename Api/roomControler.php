@@ -4,242 +4,126 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     require_once "dbConnection.php";
     require_once "createQuestion.php";
+    require_once "cupCalculation.php";
 
     $value = json_decode($_POST["value"]);
-
     $db = new dbConnection();
 
-    /*
+    if (isset($value->roomID)) {
 
-        $value de gelen veriler
-        token
-        questionID
-        answer
-        roomID
-
-    */
-    if(isset($value -> roomID))
-    {
-        if ($value -> answer != "none")
-        {
-            
-            //token uzerinden eşleşmedeki playerRoomID ye erişiyoruz.
-            $query = $db -> fetch( 
-                "SELECT  rp.roomplayerID, rp.delay FROM roomplayer rp inner  Join  tokens t ON t.playerID = rp.playerID
-                inner Join encounterroom ect on rp.roomID = ect.roomID
-                where ect.status = 'matched' and t.token = :token ",
-                ["token" => $value -> token]
-            )["roomplayerID"];
-            
-            $roomPlayerID = $query["playerID"];
-            $delay = $query["delay"];
-            // rakibin gecikmesinni hesaplama
-            $enemy = $db -> fetch(
-                "SELECT roomplayerID, delay from roomplayer 
-                where roomID = :roomID and roomplayerID != :roomplayerID ",
-                [
-                    "roomID" => $query -> roomID,
-                    "roomplayerID" => $roomPlayerID
-                ]
+        if ($value->answer != "None") {
+            $query = $db->fetch(
+                "SELECT rp.roomplayerID, rp.delay, rp.roomID, rp.playerID FROM roomplayer rp 
+                INNER JOIN tokens t ON t.playerID = rp.playerID
+                INNER JOIN encounterroom ect ON rp.roomID = ect.roomID
+                WHERE ect.status = 'matched' AND t.token = :token",
+                ["token" => $value->token]
             );
 
-            if(($enemy["delay"] + 6) < time())
-            {
-                
-                $players = $db -> fetchAll(
-                    "SELECT * From roomplayer rp inner join player p
-                    ON rp.playerID = p.playerID
-                    where rp.roomID = :roomID",
-                    [
-                        "roomID" => $value -> roomID
-                    ]
+            if (!$query) exit(json_encode(["error" => "Player not matched or invalid token"]));
+
+            $roomPlayerID = $query["roomplayerID"];
+            $delay = $query["delay"];
+            $roomID = $query["roomID"];
+            $playerID = $query["playerID"];
+
+            $enemy = $db->fetch(
+                "SELECT roomplayerID, delay, playerID FROM roomplayer 
+                WHERE roomID = :roomID AND roomplayerID != :roomplayerID",
+                ["roomID" => $roomID, "roomplayerID" => $roomPlayerID]
+            );
+
+            if ($enemy && ($enemy["delay"] + 32 < time())) {
+                $players = $db->fetchAll(
+                    "SELECT * FROM roomplayer rp 
+                    INNER JOIN player p ON rp.playerID = p.playerID
+                    WHERE rp.roomID = :roomID",
+                    ["roomID" => $roomID]
                 );
 
-                if($players[0]["playerID"] == $enemy["playerID"])
-                {
-                    $winner = $players[1];
-                    $loser = $players[0];
-                }
-                else
-                {
-                    $winner = $players[0];
-                    $loser = $players[1];
-                }
+                $winner = ($players[0]["playerID"] == $enemy["playerID"]) ? $players[1] : $players[0];
+                $loser = ($players[0]["playerID"] == $enemy["playerID"]) ? $players[0] : $players[1];
 
-                WinnerLoser($db, $winner, $loser, $calculate["cupGain"], $calculate["cupLose"]);
+                $calculation = new cupCalculation();
+                $calculate = $calculation->calculate($winner["cup"], $loser["cup"]);
 
+                WinnerLoser($db, $winner, $loser, $calculate["cupGain"], $calculate["cupLose"], $roomID);
             }
 
-            //matchquestions tablosundan sorunun bulundugu indexi çekiyoruz.
-            $matchQuestionID = $db -> fetch(
-                "SELECT matchquestionID from matchquestions
-                where roomID = :roomID and questionID = :questionID",
-                [
-                    "roomID" => $value -> roomID,
-                    "questionID" => $value -> questionID
-                ]
-            )["matchQuestionID"];
-            
+            $matchQuestionID = $db->fetch(
+                "SELECT matchquestionID FROM matchquestions
+                WHERE roomID = :roomID AND questionID = :questionID",
+                ["roomID" => $roomID, "questionID" => $value->questionID]
+            )["matchquestionID"] ?? null;
+
+            if (!$matchQuestionID) exit(json_encode(["error" => "No such question in room"]));
+
             $time = time() - $delay;
-    
-            //ne kadar sürede cevap verdiği ve cevabı tutuluyor.
-            $db -> insert("answers",
-            [
+
+            $db->insert("answers", [
                 "roomplayerID" => $roomPlayerID,
                 "matchquestionID" => $matchQuestionID,
-                "answer" => $value -> answer,
+                "answer" => $value->answer,
                 "answertime" => $time
             ]);
-    
-            $db -> query(
-                "UPDATE roomplayer set delay = :delay
-                where roomplayerID = :roomplayerID",
-                [
-                    "delay" => time(),
-                    "roomplayerID" => $roomPlayerID
-                ]
-            );
-    
-            $question = $db ->  fetch(
+
+            $db->query("UPDATE roomplayer SET delay = :delay WHERE roomplayerID = :roomplayerID", [
+                "delay" => time(),
+                "roomplayerID" => $roomPlayerID
+            ]);
+
+            $question = $db->fetch(
                 "SELECT q.questionID, q.question, q.answerA, q.answerB, q.answerC, q.answerD 
-                FROM question q INNER JOIN matchquestions m 
-                ON q.questionID=m.questionID 
-                where m.roomID =  :roomID 
-                AND m.questionIndex = ( SELECT questionIndex FROM matchquestions
-                where matchquestionID = :matchquestionID ) + 1",
-                [
-                    "matchquestionID" => $matchQuestionID,
-                    "roomID" => $value -> roomID
-                ]
+                FROM question q 
+                INNER JOIN matchquestions m ON q.questionID = m.questionID 
+                WHERE m.roomID = :roomID AND m.questionIndex = (
+                    SELECT questionIndex FROM matchquestions WHERE matchquestionID = :matchQuestionID
+                ) + 1",
+                ["roomID" => $roomID, "matchQuestionID" => $matchQuestionID]
             );
-    
-            if ($question != false)
-            {
+
+            if ($question) {
                 echo json_encode($question);
-            }
-            else // oyun bitişi
-            {
-    
-                $answers = $db -> fetchAll(
-                    "SELECT matchquestionID, answer, answertime from answers 
-                    where roomplayerID = :roomplayerID ",
-                    [
-                        "roomplayerID" => $roomPlayerID
-                    ]
-                );
-    
+            } else {
+                $answers = $db->fetchAll("SELECT matchquestionID, answer, answertime FROM answers WHERE roomplayerID = :roomplayerID", ["roomplayerID" => $roomPlayerID]);
+
                 $totalScore = 0;
-    
-                foreach($answers as $answer)
-                {
-    
-                    $correctAnswer =  $db -> fetch(
-                        "SELECT q.difficultyLevel q.answer from matchquestions m INNER JOIN question q 
-                        ON q.questionID = m.questionID 
-                        where  m.matchquestionID = :matchquestionID",
-                        [
-                            "matchquestionID" => $answer["matchquestionID"]
-                        ]
+                foreach ($answers as $answer) {
+                    $correct = $db->fetch(
+                        "SELECT q.difficultyLevel, q.answer FROM matchquestions m 
+                        INNER JOIN question q ON q.questionID = m.questionID 
+                        WHERE m.matchquestionID = :matchquestionID",
+                        ["matchquestionID" => $answer["matchquestionID"]]
                     );
-    
-                    //puan hesaplama düzenlennebilir.
-    
-                    if($correctAnswer["answer"] == $answer["answer"])
-                    {
-                        $totalScore += ($answer["answertime"] * 1.5 + $correctAnswer["difficultyLevel"] * 1.7 + 20);
+                    if ($correct["answer"] == $answer["answer"]) {
+                        $totalScore += ($answer["answertime"] * 1.5 + $correct["difficultyLevel"] * 1.7 + 20);
                     }
-    
                 }
-    
-                $db -> query(
-                    "UPDATE roomplayer 
-                    set point = :point
-                    where roomplayerID = :roomplayerID",
-                    [
-                        "roomplayerID" => $roomPlayerID,
-                        "point" => $totalScore
-                    ]
-                );
-    
-                $pointControl = $db -> fetch(
-                    "SELECT rp.point, rp.playerID FROM roomplayer rp inner join encounterroom ect
-                    ON rp.roomID = ect.roomID
-                    where roomPlayerID != :roomplayerID and rp.roomID = :roomID
-                    ",
-                    [
-                        "roomplayerID" => $roomPlayerID,
-                        "roomID" => $value -> roomID
-                    ]
-                );
-    
-                if($pointControl["point"] != null)
-                {
-                    // 2 oyuncunun bilgilerini al
-                    $players = $db->fetchAll(
-                        "SELECT * FROM roomplayer rp inner join player p
-                        ON p.playerID = rp.playerID
-                         WHERE roomID = :roomID",
-                        ["roomID" => $value->roomID]
-                    );
-    
-                    $player1 = $players[0];
-                    $player2 = $players[1];
-    
-                    // Kazanan ve kaybedeni belirle
-                    if ($player1["point"] > $player2["point"]) {
-                        $winner = $player1;
-                        $loser = $player2;
-                    } else {
-                        $winner = $player2;
-                        $loser = $player1;
-                    }
-    
-                    // Kupa hesaplama
-                    $cupCalculation = new cupCalculation();    
-                    $calculate = $cupCalculation->calculate($winner["cup"], $loser["cup"]);
 
-                    WinnerLoser($db, $winner, $loser, $calculate["cupGain"], $calculate["cupLose"]);
+                $db->query("UPDATE roomplayer SET point = :point WHERE roomplayerID = :roomplayerID", [
+                    "point" => $totalScore,
+                    "roomplayerID" => $roomPlayerID
+                ]);
 
+                $otherPlayer = $db->fetch("SELECT point, playerID FROM roomplayer WHERE roomID = :roomID AND roomplayerID != :roomplayerID", [
+                    "roomID" => $roomID, "roomplayerID" => $roomPlayerID
+                ]);
+
+                if ($otherPlayer && isset($otherPlayer["point"])) {
+                    $players = $db->fetchAll("SELECT * FROM roomplayer rp INNER JOIN player p ON p.playerID = rp.playerID WHERE roomID = :roomID", ["roomID" => $roomID]);
+                    [$winner, $loser] = ($players[0]["point"] > $players[1]["point"]) ? [$players[0], $players[1]] : [$players[1], $players[0]];
+
+                    $calculation = new cupCalculation();
+                    $calculate = $calculation->calculate($winner["cup"], $loser["cup"]);
+
+                    WinnerLoser($db, $winner, $loser, $calculate["cupGain"], $calculate["cupLose"], $roomID);
                 }
-    
-    
             }
-    
-        } 
-        else // ilk soru
-        {
-            $question = $db -> fetch(
-                "SELECT q.questionID, q.question, q.answerA, q.answerB, q.answerC, q.answerD 
-                FROM question q INNER JOIN matchquestions m 
-                ON q.questionID=m.questionID 
-                where m.roomID = :roomID 
-                AND m.questionIndex = 0",
-                [
-                    "roomID" => $value -> roomID
-                ]
-            );
-
+        } else {
+            $question = $db->fetch("SELECT q.questionID, q.question, q.answerA, q.answerB, q.answerC, q.answerD FROM question q INNER JOIN matchquestions m ON q.questionID = m.questionID WHERE m.roomID = :roomID AND m.questionIndex = 0", ["roomID" => $value->roomID]);
             echo json_encode($question);
-            
         }
-    }
-    else 
-    { 
-
-        /*
-        
-            metch(
-                playerID
-                cup
-                minCup
-                maxCup
-                startTime
-                time
-            );
-
-        
-        */
-
+    } else {
         // Eşleşme sistemi
         // Eşleşme sisteminde uzun süreli haber kesileni eşleşmeden çıkarma
         $db -> query(
@@ -379,56 +263,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         }
 
     }
-
 }
 
-function WinnerLoser($db, $winner, $loser, $cupGain, $cupLose)
-{
-    // Winner/loser bilgilerini veritabanına yaz
-    $db->query(
-        "UPDATE roomplayer SET winner = 'Win' 
-        WHERE roomplayerID = :id", 
-        [
-            "id" => $winner["roomplayerID"]
-        ]);
-    $db->query(
-        "UPDATE roomplayer SET winner = 'Lose' 
-        WHERE roomplayerID = :id", 
-        [
-            "id" => $loser["roomplayerID"]
-        ]);
-
-    // roomplayer tablosundaki cupQuantity güncelle
-    $db->query(
-        "UPDATE roomplayer SET cupQuantity = cupQuantity + :cup 
-        WHERE roomplayerID = :id", 
-    [
-        "cup" => $cupGain,
-        "id" => $winner["roomplayerID"]
-    ]);
-    $db->query(
-        "UPDATE roomplayer SET cupQuantity = cupQuantity - :cup 
-        WHERE roomplayerID = :id", 
-    [
-        "cup" => $cupLose,
-        "id" => $loser["roomplayerID"]
-    ]);
-
-    // player tablosundaki toplam kupaları da güncelle (isteğe bağlı)
-    $db->query(
-        "UPDATE player SET cup = cup + :cup 
-        WHERE playerID = :id", 
-    [
-        "cup" => $cupGain,
-        "id" => $winner["playerID"]
-    ]);
-    $db->query(
-        "UPDATE player SET cup = cup - :cup
-         WHERE playerID = :id", 
-    [
-        "cup" => $cupLose,
-        "id" => $loser["playerID"]
-    ]);
+function WinnerLoser($db, $winner, $loser, $cupGain, $cupLose, $roomID) {
+    $db->query("UPDATE roomplayer SET winner = 'Win', cupQuantity = cupQuantity + :cup WHERE roomplayerID = :id", ["cup" => $cupGain, "id" => $winner["roomplayerID"]]);
+    $db->query("UPDATE roomplayer SET winner = 'Lose', cupQuantity = cupQuantity - :cup WHERE roomplayerID = :id", ["cup" => $cupLose, "id" => $loser["roomplayerID"]]);
+    $db->query("UPDATE player SET cup = cup + :cup WHERE playerID = :id", ["cup" => $cupGain, "id" => $winner["playerID"]]);
+    $db->query("UPDATE player SET cup = cup - :cup WHERE playerID = :id", ["cup" => $cupLose, "id" => $loser["playerID"]]);
+    $db->query("UPDATE encounterroom SET status = 'finished' WHERE roomID = :roomID", ["roomID" => $roomID]);
 }
 
 ?>
