@@ -117,6 +117,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                     $calculate = $calculation->calculate($winner["cup"], $loser["cup"]);
 
                     WinnerLoser($db, $winner, $loser, $calculate["cupGain"], $calculate["cupLose"], $roomID);
+                    
+
+                    //oyun bittiğinde bilgileri çekme 29.05.25
+                    $playerIsWinner = $winner["playerID"] == $playerID;
+
+                    echo json_encode([
+                        "finished" => true,
+                        "thisUsername" => $playerIsWinner ? $winner["username"] : $loser["username"],
+                        "enemyUsername" => $playerIsWinner ? $loser["username"] : $winner["username"],
+                        "thisPoint" => $playerIsWinner ? $winner["point"] : $loser["point"],
+                        "enemyPoint" => $playerIsWinner ? $loser["point"] : $winner["point"],
+                        "thisCupChange" => $playerIsWinner ? $calculate["cupGain"] : -$calculate["cupLose"],
+                        "thisStatus" => $playerIsWinner ? "Win" : "Lose",
+                        "roomID" => $roomID
+                    ]);
+                    return;
+
                 }
             }
         } else {
