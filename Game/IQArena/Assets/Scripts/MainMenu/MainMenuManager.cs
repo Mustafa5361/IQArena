@@ -156,7 +156,7 @@ public class MainMenuManager : MonoBehaviour
         mainMenu.SetActive(false);
         float height = 0;
 
-        ApiConnection.Connection<string, PlayerRank>("playerInformation.php", "rank", (value) =>
+        ApiConnection.Connection<SetRank, PlayerRank>("playerInformation.php", new SetRank("rank"), (value) =>
         {
             foreach (var playerCup in value.ranks)
             {

@@ -14,6 +14,18 @@ public class PlayerRank
     }
 }
 
+public class SetRank
+{
+
+    public string rank;
+
+    public SetRank(string rank)
+    {
+        this.rank = rank;
+    }
+
+}
+
 public class PlayerProfil
 {
 

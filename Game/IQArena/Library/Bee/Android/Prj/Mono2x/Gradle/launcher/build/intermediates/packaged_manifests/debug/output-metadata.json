@@ -4,7 +4,7 @@
     "type": "PACKAGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.DefaultCompany.IQArena",
+  "applicationId": "com.DefaultCompany.QuizStorm",
   "variantName": "debug",
   "elements": [
     {

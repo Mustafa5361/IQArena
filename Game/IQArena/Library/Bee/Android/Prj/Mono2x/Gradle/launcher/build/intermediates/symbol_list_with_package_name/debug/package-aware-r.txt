@@ -1,4 +1,4 @@
-com.DefaultCompany.IQArena
+com.DefaultCompany.QuizStorm
 color staticSplashScreenBackgroundColor
 id unitySurfaceView
 mipmap app_icon

@@ -35,12 +35,9 @@ function PastMatch($playerID)
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
-
     $value = json_decode($_POST["POST"]);
 
-    if($value == "rank")
+    if(isset($value -> rank))
     {
 
         $query = $db -> fetchAll(

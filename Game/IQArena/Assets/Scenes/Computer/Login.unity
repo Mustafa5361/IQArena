@@ -7197,7 +7197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 8.601001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: 371.2987}
+  m_AnchoredPosition: {x: 18, y: 376}
   m_SizeDelta: {x: 314.0456, y: 76.6903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1617536990
@@ -7233,7 +7233,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Arena
+  m_Text: Storm
 --- !u!222 &1617536991
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8065,7 +8065,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: IQ
+  m_Text: Quiz
 --- !u!222 &1838406967
 CanvasRenderer:
   m_ObjectHideFlags: 0

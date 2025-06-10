@@ -4358,7 +4358,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Arena
+  m_Text: Storm
 --- !u!222 &894624629
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7879,7 +7879,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: IQ
+  m_Text: Quiz
 --- !u!222 &2034825951
 CanvasRenderer:
   m_ObjectHideFlags: 0

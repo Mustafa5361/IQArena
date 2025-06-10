@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - ArrangementData
+    - FinishDataWrite
     - GameMenu
     - LoginManager
     - MainMenuManager
@@ -40,6 +41,9 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
+    - TMPro.TMP_Settings
+    - TMPro.TMP_SpriteAsset
+    - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
@@ -173,6 +177,9 @@ ScriptsOnlyBuild:
     fullTypeName: GameMenu
     methodName: MainMenuOpen
   - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
+    methodName: MainMenuOpen
+  - assembly: Assembly-CSharp
     fullTypeName: MainMenuManager
     methodName: ProfileMenuOpen
   - assembly: Assembly-CSharp
@@ -232,13 +239,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 18204}
     - Class: 114
-      Script: {instanceID: 18572}
+      Script: {instanceID: 18570}
     - Class: 114
-      Script: {instanceID: 21836}
+      Script: {instanceID: 21112}
     - Class: 114
-      Script: {instanceID: 22476}
+      Script: {instanceID: 21832}
     - Class: 114
-      Script: {instanceID: 24332}
+      Script: {instanceID: 22056}
+    - Class: 114
+      Script: {instanceID: 22470}
+    - Class: 114
+      Script: {instanceID: 23010}
+    - Class: 114
+      Script: {instanceID: 24884}
+    - Class: 114
+      Script: {instanceID: 24892}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -287,25 +302,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 18260}
     - Class: 114
-      Script: {instanceID: 18572}
+      Script: {instanceID: 18570}
     - Class: 114
-      Script: {instanceID: 19714}
+      Script: {instanceID: 19710}
     - Class: 114
-      Script: {instanceID: 19856}
+      Script: {instanceID: 19852}
     - Class: 114
-      Script: {instanceID: 20182}
+      Script: {instanceID: 20178}
     - Class: 114
-      Script: {instanceID: 20948}
+      Script: {instanceID: 20944}
     - Class: 114
-      Script: {instanceID: 21116}
+      Script: {instanceID: 21112}
     - Class: 114
-      Script: {instanceID: 21836}
+      Script: {instanceID: 21832}
     - Class: 114
-      Script: {instanceID: 22060}
+      Script: {instanceID: 22056}
     - Class: 114
-      Script: {instanceID: 22476}
+      Script: {instanceID: 22470}
     - Class: 114
-      Script: {instanceID: 23994}
+      Script: {instanceID: 23986}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -348,23 +363,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 18204}
     - Class: 114
-      Script: {instanceID: 18572}
+      Script: {instanceID: 18570}
     - Class: 114
-      Script: {instanceID: 18904}
+      Script: {instanceID: 18900}
     - Class: 114
-      Script: {instanceID: 19540}
+      Script: {instanceID: 19536}
     - Class: 114
-      Script: {instanceID: 20036}
+      Script: {instanceID: 20032}
     - Class: 114
-      Script: {instanceID: 21836}
+      Script: {instanceID: 21832}
     - Class: 114
-      Script: {instanceID: 22476}
+      Script: {instanceID: 22470}
     - Class: 114
-      Script: {instanceID: 22650}
+      Script: {instanceID: 22644}
     - Class: 114
-      Script: {instanceID: 23016}
+      Script: {instanceID: 23010}
     - Class: 114
-      Script: {instanceID: 23844}
+      Script: {instanceID: 23836}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1206,12 +1221,6 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: bd1268dbfae367c12eee0d6c3d85745e
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: FinishDataWrite
-  - hash:
-      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1536,12 +1545,6 @@ ScriptsOnlyBuild:
     className: VertexColorCycler
   - hash:
       serializedVersion: 2
-      Hash: 81a7f0715fc2c0c2b97e1f57a0a2b6c5
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: GameMenu
-  - hash:
-      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1626,6 +1629,18 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 81a7f0715fc2c0c2b97e1f57a0a2b6c5
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GameMenu
+  - hash:
+      serializedVersion: 2
+      Hash: bd1268dbfae367c12eee0d6c3d85745e
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: FinishDataWrite
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Assembly-CSharp
     namespaceName: 
@@ -1635,4 +1650,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Mobile/Login.unity
   - Assets/Scenes/Mobile/Game.unity
   - Assets/Scenes/Mobile/MainMenu.unity
-  playerPath: C:/Users/ACER/Desktop/IQArena Deneme/APK/Quisstorm.apk
+  playerPath: "C:/Users/hsnak/OneDrive/Masa\xFCst\xFC/IQArena Deneme/APK/Quisstorm.apk"
