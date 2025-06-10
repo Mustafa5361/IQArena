@@ -40,6 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                     WHERE rp.roomID = :roomID",
                     ["roomID" => $roomID]
                 );
+                
+                //OYUN SONU OLARAK DÜZENLENECEK.
 
                 $winner = ($players[0]["playerID"] == $enemy["playerID"]) ? $players[1] : $players[0];
                 $loser = ($players[0]["playerID"] == $enemy["playerID"]) ? $players[0] : $players[1];
@@ -83,19 +85,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             );
 
             if ($question) {
-                echo json_encode($question);
+                echo json_encode(["Question" => $question]);
             } else {
                 $answers = $db->fetchAll("SELECT matchquestionID, answer, answertime FROM answers WHERE roomplayerID = :roomplayerID", ["roomplayerID" => $roomPlayerID]);
 
                 $totalScore = 0;
                 foreach ($answers as $answer) {
                     $correct = $db->fetch(
-                        "SELECT q.difficultyLevel, q.answer FROM matchquestions m 
+                        "SELECT q.difficultyLevel, q.correctAnswer FROM matchquestions m 
                         INNER JOIN question q ON q.questionID = m.questionID 
                         WHERE m.matchquestionID = :matchquestionID",
                         ["matchquestionID" => $answer["matchquestionID"]]
                     );
-                    if ($correct["answer"] == $answer["answer"]) {
+                    if ($correct["correctAnswer"] == $answer["answer"]) {
                         $totalScore += ($answer["answertime"] * 1.5 + $correct["difficultyLevel"] * 1.7 + 20);
                     }
                 }
@@ -104,6 +106,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                     "point" => $totalScore,
                     "roomplayerID" => $roomPlayerID
                 ]);
+
+                echo json_encode(["Question" => null , "Finish" => ["finished" => false, "thisPoint" => $totalScore]]);
+
+                /*
 
                 $otherPlayer = $db->fetch("SELECT point, playerID FROM roomplayer WHERE roomID = :roomID AND roomplayerID != :roomplayerID", [
                     "roomID" => $roomID, "roomplayerID" => $roomPlayerID
@@ -122,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                     //oyun bittiğinde bilgileri çekme 29.05.25
                     $playerIsWinner = $winner["playerID"] == $playerID;
 
-                    echo json_encode([
+                    echo json_encode(["Question" => null, "Finished" => [
                         "finished" => true,
                         "thisUsername" => $playerIsWinner ? $winner["username"] : $loser["username"],
                         "enemyUsername" => $playerIsWinner ? $loser["username"] : $winner["username"],
@@ -131,14 +137,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                         "thisCupChange" => $playerIsWinner ? $calculate["cupGain"] : -$calculate["cupLose"],
                         "thisStatus" => $playerIsWinner ? "Win" : "Lose",
                         "roomID" => $roomID
-                    ]);
+                    ]]);
                     return;
-
+                    
                 }
+                */
             }
         } else {
             $question = $db->fetch("SELECT q.questionID, q.question, q.answerA, q.answerB, q.answerC, q.answerD FROM question q INNER JOIN matchquestions m ON q.questionID = m.questionID WHERE m.roomID = :roomID AND m.questionIndex = 0", ["roomID" => $value->roomID]);
-            echo json_encode($question);
+            echo json_encode(["Question" => $question, "Finish" => null]);
         }
     } else {
         // Eşleşme sistemi

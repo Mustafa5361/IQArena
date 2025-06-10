@@ -2353,23 +2353,6 @@ MonoBehaviour:
     player2Time: 5T - 5F
     player1Point: 35
     player2Point: 8
-  PlayerRank:
-  - username: "\u015Eule"
-    cup: 1907
-  - username: Mustafa
-    cup: 1903
-  - username: Hasan
-    cup: 1967
-  - username: Enes
-    cup: 2004
-  - username: Melisa
-    cup: 61
-  - username: Melike
-    cup: 2000
-  - username: "\u0130rfan"
-    cup: 1750
-  - username: "N\xFCn\xFCk"
-    cup: 750
   timeText: {fileID: 825325141}
 --- !u!4 &1322356852
 Transform:

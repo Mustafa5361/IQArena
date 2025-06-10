@@ -23,7 +23,6 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private List<PlayerHistory> MatchHistory1;
     private List<GameObject> MatchHistoryObject = new List<GameObject>();
 
-    [SerializeField] private List<PlayerCup> PlayerRank;
     private List<GameObject> PlayerRankObjekt = new List<GameObject>();
 
     public Text timeText;
@@ -63,7 +62,6 @@ public class MainMenuManager : MonoBehaviour
                     if (value.success)
                     {
 
-                        GameMenu.SetRoomID(value.roomID);
                         GameMenu.SetRoomID(value.roomID);
                         SceneManager.LoadScene("Game");
 
@@ -116,6 +114,7 @@ public class MainMenuManager : MonoBehaviour
         mainMenu.SetActive(false);
         profilemenu.SetActive(true);   
     }
+
     public void ProfileMenuClose()
     {
 
@@ -157,7 +156,7 @@ public class MainMenuManager : MonoBehaviour
         mainMenu.SetActive(false);
         float height = 0;
 
-        ApiConnection.Connection<string, PlayerRank>("playerInformation.php", "", (value) =>
+        ApiConnection.Connection<string, PlayerRank>("playerInformation.php", "rank", (value) =>
         {
             foreach (var playerCup in value.ranks)
             {

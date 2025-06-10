@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +18,16 @@ public class GameMenu : MonoBehaviour
     [SerializeField] private Text bBtnTxt;
     [SerializeField] private Text cBtnTxt;
     [SerializeField] private Text dBtnTxt;
+
+    [SerializeField] private GameObject finishPanel;
+
+    [SerializeField] private GameObject finishPanelPlayer;
+    [SerializeField] private GameObject finishPanelEnemy;
+
+    [SerializeField] private TextMeshProUGUI WinOrLose;
+    [SerializeField] private TextMeshProUGUI CupQuentity;
+
+    Coroutine finish;
 
     private static int roomID;
 
@@ -63,7 +75,84 @@ public class GameMenu : MonoBehaviour
 
         Debug.Log(writeQuestion.ToString());
 
-        ApiConnection.Connection<WriteQuestion, Question>("roomControler.php", writeQuestion, QuestionUpdate);
+        ApiConnection.Connection<WriteQuestion, SetGameData>("roomControler.php", writeQuestion, SetDataApi);
+
+    }
+
+    public void SetDataApi(SetGameData gameData)
+    {
+
+        if (gameData.Question != null && gameData.Question.questionID > 0)
+            QuestionUpdate(gameData.Question);
+        else
+            GameOverControl(gameData.Finish);
+
+    }
+
+    public void GameOverControl(GameFinishData finishData)
+    {
+
+        Debug.Log("Finished = " + finishData.ToString());
+        if (finishData.finished)
+        {
+
+            StopCoroutine(finish);
+            GameOverPanelSetData(finishData);
+
+        }
+        else
+            if (finish == null)
+                finish = StartCoroutine(FinishDataGetApi());
+
+
+    }
+
+    IEnumerator FinishDataGetApi()
+    {
+
+        while (true)
+        {
+
+            ApiConnection.Connection<SetData, SetGameData>("matchFinished.php", new SetData(roomID, GameManager.Token), SetDataApi);
+
+            yield return new WaitForSeconds(3f);
+
+        }
+
+    }
+
+    private void GameOverPanelSetData(GameFinishData finish)
+    {
+         
+        finishPanel.SetActive(true);
+
+        if (finish.thisStatus.ToLower() == "win")
+        {
+
+            WinOrLose.text = "WINNER";
+            WinOrLose.color = Color.green;
+
+        }
+        else
+        {
+
+            WinOrLose.text = "LOSE";
+            WinOrLose.color = Color.red;
+
+        }
+
+        CupQuentity.text = finish.thisCupChange;
+
+
+        finishPanelPlayer.GetComponent<FinishDataWrite>().CreateDates(
+            finish.thisUsername,
+            new FinishDataWrite.Data("Point", finish.thisPoint)
+            );
+
+        finishPanelEnemy.GetComponent<FinishDataWrite>().CreateDates(
+            "Point",
+            new FinishDataWrite.Data("Point", finish.enemyPoint)
+            );
 
     }
 
@@ -135,6 +224,21 @@ public class GameMenu : MonoBehaviour
         B,
         C,
         D,
+    }
+
+    //oyun onu verilerini istemek için.
+    class SetData
+    {
+
+        public string token;
+        public int roomID;
+
+        public SetData(int roomID, string token)
+        {
+            this.roomID = roomID;
+            this.token = token;
+        }
+
     }
 
 }

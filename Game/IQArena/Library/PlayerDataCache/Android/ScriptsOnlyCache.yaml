@@ -66,7 +66,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.VerticalLayoutGroup
   serializedClasses:
     Assembly-CSharp:
-    - PlayerCup
     - PlayerHistory
     Unity.TextMeshPro:
     - TMPro.FaceInfo_Legacy
@@ -124,9 +123,6 @@ ScriptsOnlyBuild:
     methodName: LogingeriPanelOpen
   - assembly: Assembly-CSharp
     fullTypeName: LoginManager
-    methodName: CloseTheGame
-  - assembly: Assembly-CSharp
-    fullTypeName: LoginManager
     methodName: SigninPanelOpen
   - assembly: Assembly-CSharp
     fullTypeName: LoginManager
@@ -142,9 +138,6 @@ ScriptsOnlyBuild:
     methodName: TogglePasswordConfirmationVisibility
   - assembly: Assembly-CSharp
     fullTypeName: LoginManager
-    methodName: QuitCancelMenuOpen
-  - assembly: Assembly-CSharp
-    fullTypeName: LoginManager
     methodName: TogglePasswordVisibility
   - assembly: Assembly-CSharp
     fullTypeName: LoginManager
@@ -153,8 +146,32 @@ ScriptsOnlyBuild:
     fullTypeName: LoginManager
     methodName: Login
   - assembly: Assembly-CSharp
-    fullTypeName: LoginManager
-    methodName: ExitMenuOpen
+    fullTypeName: GameMenu
+    methodName: answerButton
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
+    methodName: MainMenuOpen
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
+    methodName: answerButton
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
+    methodName: MainMenuOpen
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
+    methodName: QuitPanel
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
+    methodName: answerButton
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
+    methodName: answerButton
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
+    methodName: QuitPanelClose
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
+    methodName: MainMenuOpen
   - assembly: Assembly-CSharp
     fullTypeName: MainMenuManager
     methodName: ProfileMenuOpen
@@ -188,21 +205,6 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: MainMenuManager
     methodName: QuitCancelMenuOpen
-  - assembly: Assembly-CSharp
-    fullTypeName: GameMenu
-    methodName: MainMenuOpen
-  - assembly: Assembly-CSharp
-    fullTypeName: GameMenu
-    methodName: MainMenuOpen
-  - assembly: Assembly-CSharp
-    fullTypeName: GameMenu
-    methodName: QuitPanel
-  - assembly: Assembly-CSharp
-    fullTypeName: GameMenu
-    methodName: QuitPanelClose
-  - assembly: Assembly-CSharp
-    fullTypeName: GameMenu
-    methodName: MainMenuOpen
   sceneClasses:
     Assets/Scenes/Mobile/Game.unity:
     - Class: 1
@@ -230,13 +232,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 18204}
     - Class: 114
-      Script: {instanceID: 18570}
+      Script: {instanceID: 18572}
     - Class: 114
-      Script: {instanceID: 21832}
+      Script: {instanceID: 21836}
     - Class: 114
-      Script: {instanceID: 22470}
+      Script: {instanceID: 22476}
     - Class: 114
-      Script: {instanceID: 24326}
+      Script: {instanceID: 24332}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -285,25 +287,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 18260}
     - Class: 114
-      Script: {instanceID: 18570}
+      Script: {instanceID: 18572}
     - Class: 114
-      Script: {instanceID: 19710}
+      Script: {instanceID: 19714}
     - Class: 114
-      Script: {instanceID: 19852}
+      Script: {instanceID: 19856}
     - Class: 114
-      Script: {instanceID: 20178}
+      Script: {instanceID: 20182}
     - Class: 114
-      Script: {instanceID: 20944}
+      Script: {instanceID: 20948}
     - Class: 114
-      Script: {instanceID: 21112}
+      Script: {instanceID: 21116}
     - Class: 114
-      Script: {instanceID: 21832}
+      Script: {instanceID: 21836}
     - Class: 114
-      Script: {instanceID: 22056}
+      Script: {instanceID: 22060}
     - Class: 114
-      Script: {instanceID: 22470}
+      Script: {instanceID: 22476}
     - Class: 114
-      Script: {instanceID: 23988}
+      Script: {instanceID: 23994}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -346,23 +348,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 18204}
     - Class: 114
-      Script: {instanceID: 18570}
+      Script: {instanceID: 18572}
     - Class: 114
-      Script: {instanceID: 18900}
+      Script: {instanceID: 18904}
     - Class: 114
-      Script: {instanceID: 19536}
+      Script: {instanceID: 19540}
     - Class: 114
-      Script: {instanceID: 20032}
+      Script: {instanceID: 20036}
     - Class: 114
-      Script: {instanceID: 21832}
+      Script: {instanceID: 21836}
     - Class: 114
-      Script: {instanceID: 22470}
+      Script: {instanceID: 22476}
     - Class: 114
-      Script: {instanceID: 22644}
+      Script: {instanceID: 22650}
     - Class: 114
-      Script: {instanceID: 23010}
+      Script: {instanceID: 23016}
     - Class: 114
-      Script: {instanceID: 23838}
+      Script: {instanceID: 23844}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1204,6 +1206,12 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
+      Hash: bd1268dbfae367c12eee0d6c3d85745e
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: FinishDataWrite
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1270,7 +1278,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
-      Hash: bbdf048adaa0fe04476bf7732c814fb9
+      Hash: 7f21f8e68bae2f8e74a7498cd2662425
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: MainMenuManager
@@ -1528,7 +1536,7 @@ ScriptsOnlyBuild:
     className: VertexColorCycler
   - hash:
       serializedVersion: 2
-      Hash: 35dc6eaa1c1e1384fe5e83c52a0710e8
+      Hash: 81a7f0715fc2c0c2b97e1f57a0a2b6c5
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: GameMenu
@@ -1616,9 +1624,15 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: TabNavigation
   platform: 13
   scenePathNames:
   - Assets/Scenes/Mobile/Login.unity
-  - Assets/Scenes/Mobile/MainMenu.unity
   - Assets/Scenes/Mobile/Game.unity
-  playerPath: "C:/Users/hsnak/OneDrive/Masa\xFCst\xFC/HasanPc/IQArenaMobile/IQArena.apk"
+  - Assets/Scenes/Mobile/MainMenu.unity
+  playerPath: C:/Users/ACER/Desktop/IQArena Deneme/APK/Quisstorm.apk

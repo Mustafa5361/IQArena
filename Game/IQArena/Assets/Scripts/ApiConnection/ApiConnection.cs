@@ -37,7 +37,7 @@ public static class ApiConnection
 
             }
             else
-                Debug.Log("ERROR : " + request.error);
+                Debug.LogError("ERROR : " + request.error);
 
 
         }
