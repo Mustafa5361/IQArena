@@ -158,8 +158,12 @@ public class MainMenuManager : MonoBehaviour
 
         ApiConnection.Connection<SetRank, PlayerRank>("playerInformation.php", new SetRank("rank"), (value) =>
         {
+
             foreach (var playerCup in value.ranks)
             {
+
+                if (playerCup == null)
+                    break;
 
                 GameObject go = Instantiate(RankPlayerPlanel, RankPanel.transform);
 
@@ -169,14 +173,15 @@ public class MainMenuManager : MonoBehaviour
 
                 height += (go.GetComponent<RectTransform>().sizeDelta.y + 31);
 
-            }
-        });
+                Debug.Log(height);
 
-        RectTransform rt = RankPanel.GetComponent<RectTransform>();
-        Vector2 sizeDelta = rt.sizeDelta;
-        sizeDelta.y = height;
-        rt.sizeDelta = sizeDelta;
+            }
+
+        });
+        
         Ranknmenu.SetActive(true);
+        RectTransform rt = RankPanel.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(0, height);
 
     }
 

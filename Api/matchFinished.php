@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     $value = json_decode($_POST["value"]);
 
-    $db = dbConnection();
+    $db = new dbConnection();
 
     if(isset($value -> token))
     {

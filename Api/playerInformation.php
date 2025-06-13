@@ -7,6 +7,8 @@ $db = new dbConnection();
 function PastMatch($playerID)
 {
 
+    global $db;
+
     $query = $db -> fetchAll(
             "SELECT 
             p1.username AS thisUsername,
@@ -35,21 +37,21 @@ function PastMatch($playerID)
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 
-    $value = json_decode($_POST["POST"]);
+    $value = json_decode($_POST["value"]);
 
     if(isset($value -> rank))
     {
 
         $query = $db -> fetchAll(
-            "SELECT username, cup, 'point'
+            "SELECT username, cup, point
             FROM player
             WHERE isDeleted = 0
-            ORDER BY cup DESC, 'point' DESC
+            ORDER BY cup DESC, point DESC
             LIMIT 100;",
             []
         );
 
-        echo json_encode($query);
+        echo json_encode(["ranks" => $query]);
 
     }
     else // value => token

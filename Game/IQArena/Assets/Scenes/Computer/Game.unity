@@ -379,8 +379,8 @@ MonoBehaviour:
   finishPanel: {fileID: 965050413}
   finishPanelPlayer: {fileID: 2076592139}
   finishPanelEnemy: {fileID: 1396449810}
-  WinOrLose: {fileID: 0}
-  CupQuentity: {fileID: 0}
+  WinOrLose: {fileID: 1493302935}
+  CupQuentity: {fileID: 691784995}
 --- !u!1 &151233113
 GameObject:
   m_ObjectHideFlags: 0
