@@ -12,10 +12,12 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject profilemenu;
     [SerializeField] private GameObject quitMenu;
     [SerializeField] private GameObject matchExpectionmenu;
+    [SerializeField] private GameObject unitsPanel;
 
     [SerializeField] private GameObject Ranknmenu; // listenin ana menüsü
     [SerializeField] private GameObject RankPanel; //gösterilen liste
     [SerializeField] private GameObject RankPlayerPlanel; // gösterilecek kiþiler
+
 
     [SerializeField] private GameObject MatchPanel; // geçmiþin göstrileceði liste
     [SerializeField] private GameObject MatchPlayerPlanel; // geçmiþ
@@ -29,10 +31,26 @@ public class MainMenuManager : MonoBehaviour
 
     Coroutine expection;
 
+    public void UnitsPanelOpen()
+    {
+        mainMenu.SetActive(false);
+        unitsPanel.SetActive(true);
+    }
+
+    public void UnitsPanelClose()
+    {
+        unitsPanel.SetActive(false);    
+        mainMenu.SetActive(true);
+    }
+
+
     public void SinglePlayerOpen()
     {
+
         SceneManager.LoadScene("Game");
     }
+
+
 
     public void matchExpectionmenuOpen()
     {
