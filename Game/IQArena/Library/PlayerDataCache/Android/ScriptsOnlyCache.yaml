@@ -41,9 +41,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
-    - TMPro.TMP_Settings
-    - TMPro.TMP_SpriteAsset
-    - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
@@ -163,6 +160,9 @@ ScriptsOnlyBuild:
     methodName: MainMenuOpen
   - assembly: Assembly-CSharp
     fullTypeName: GameMenu
+    methodName: MainMenuOpen
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
     methodName: QuitPanel
   - assembly: Assembly-CSharp
     fullTypeName: GameMenu
@@ -177,14 +177,14 @@ ScriptsOnlyBuild:
     fullTypeName: GameMenu
     methodName: MainMenuOpen
   - assembly: Assembly-CSharp
-    fullTypeName: GameMenu
-    methodName: MainMenuOpen
-  - assembly: Assembly-CSharp
     fullTypeName: MainMenuManager
     methodName: ProfileMenuOpen
   - assembly: Assembly-CSharp
     fullTypeName: MainMenuManager
     methodName: RanKMenuClose
+  - assembly: Assembly-CSharp
+    fullTypeName: MainMenuManager
+    methodName: UnitsPanelClose
   - assembly: Assembly-CSharp
     fullTypeName: MainMenuManager
     methodName: ExitMenuOpen
@@ -202,10 +202,13 @@ ScriptsOnlyBuild:
     methodName: matchExpectionmenuClose
   - assembly: Assembly-CSharp
     fullTypeName: MainMenuManager
+    methodName: UnitsPanelOpen
+  - assembly: Assembly-CSharp
+    fullTypeName: MainMenuManager
     methodName: LogOut
   - assembly: Assembly-CSharp
     fullTypeName: MainMenuManager
-    methodName: SinglePlayerOpen
+    methodName: UnitsPanelOpen
   - assembly: Assembly-CSharp
     fullTypeName: MainMenuManager
     methodName: RanKMenuOpen
@@ -251,9 +254,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 23010}
     - Class: 114
-      Script: {instanceID: 24884}
+      Script: {instanceID: 24882}
     - Class: 114
-      Script: {instanceID: 24892}
+      Script: {instanceID: 24890}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1287,7 +1290,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
-      Hash: 7f21f8e68bae2f8e74a7498cd2662425
+      Hash: c4c796f2d2536820c08e44ccecf9ff5a
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: MainMenuManager
@@ -1629,7 +1632,7 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 81a7f0715fc2c0c2b97e1f57a0a2b6c5
+      Hash: 41d52c1ebb69de77c64ae1d16f248e28
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: GameMenu
@@ -1645,9 +1648,15 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: TabNavigation
+  - hash:
+      serializedVersion: 2
+      Hash: 59cf011bee8868b06edccccf90480643
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GetValuesUnit
   platform: 13
   scenePathNames:
   - Assets/Scenes/Mobile/Login.unity
   - Assets/Scenes/Mobile/Game.unity
   - Assets/Scenes/Mobile/MainMenu.unity
-  playerPath: "C:/Users/hsnak/OneDrive/Masa\xFCst\xFC/IQArena Deneme/APK/Quisstorm.apk"
+  playerPath: C:/Users/ACER/Desktop/IQArena Deneme/APK/Quisstorm.apk

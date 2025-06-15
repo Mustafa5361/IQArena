@@ -13,14 +13,17 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject quitMenu;
     [SerializeField] private GameObject matchExpectionmenu;
     [SerializeField] private GameObject unitsPanel;
+    [SerializeField] private GameObject unitsPanelListPanel;
 
     [SerializeField] private GameObject Ranknmenu; // listenin ana menüsü
     [SerializeField] private GameObject RankPanel; //gösterilen liste
     [SerializeField] private GameObject RankPlayerPlanel; // gösterilecek kiþiler
 
-
     [SerializeField] private GameObject MatchPanel; // geçmiþin göstrileceði liste
     [SerializeField] private GameObject MatchPlayerPlanel; // geçmiþ
+
+    [SerializeField] private GameObject unitBtn;
+    private List<GameObject> unitBtns = new List<GameObject>();
 
     [SerializeField] private List<PlayerHistory> MatchHistory1;
     private List<GameObject> MatchHistoryObject = new List<GameObject>();
@@ -34,23 +37,38 @@ public class MainMenuManager : MonoBehaviour
     public void UnitsPanelOpen()
     {
         mainMenu.SetActive(false);
+
+        ApiConnection.Connection<GetUnitApi, GetValuesUnitList>("singlePlayer.php", new GetUnitApi { unitID = 0 }, (value) =>
+        {
+            if (value.units == null || value.units.Count == 0)
+            {
+                Debug.LogWarning("Unit listesi boþ veya null.");
+                return;
+            }
+
+            foreach (var item in value.units)
+            {
+                GameObject go = Instantiate(unitBtn, unitsPanelListPanel.transform);
+                go.GetComponent<GetValuesUnit>().SetData(item.unitID, item.unitName);
+                unitBtns.Add(go);
+            }
+
+        });
+
         unitsPanel.SetActive(true);
     }
-
     public void UnitsPanelClose()
     {
-        unitsPanel.SetActive(false);    
+        unitsPanel.SetActive(false);
+        
+        foreach (var item in unitBtns)
+        {
+            Destroy(item.gameObject);
+        }
+        unitBtns.Clear();
+
         mainMenu.SetActive(true);
     }
-
-
-    public void SinglePlayerOpen()
-    {
-
-        SceneManager.LoadScene("Game");
-    }
-
-
 
     public void matchExpectionmenuOpen()
     {
