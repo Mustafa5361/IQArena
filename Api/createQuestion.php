@@ -24,7 +24,7 @@ class createQuestion
             "answerB" => $answerB,
             "answerC" => $answerC,
             "answerD" => $answerD,
-            "currentAnswer" => $currentAnswer,
+            "correctAnswer" => $currentAnswer,
             "difficultyLevel" => $difficultyLevel,
         ]    
         );
@@ -92,6 +92,22 @@ class createQuestion
 
     }
 
+    function selectRandomQuestionToUnit($unitID)
+    {
+
+        $query = $this -> db -> fetchAll(
+            "SELECT question, answerA, answerB, answerC, answerD, correctAnswer FROM question 
+            WHERE unitID = :unitID
+            ORDER BY RAND()
+            LIMIT 10",
+            [
+                "unitID" => $unitID
+            ]
+        );
+
+        return $query;
+
+    }
 
 }    
 

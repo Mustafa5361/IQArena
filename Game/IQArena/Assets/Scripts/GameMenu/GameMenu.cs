@@ -19,6 +19,8 @@ public class GameMenu : MonoBehaviour
     [SerializeField] private Text cBtnTxt;
     [SerializeField] private Text dBtnTxt;
 
+    #region multiPlayer
+
     [SerializeField] private GameObject finishPanel;
 
     [SerializeField] private GameObject finishPanelPlayer;
@@ -29,13 +31,36 @@ public class GameMenu : MonoBehaviour
 
     Coroutine finish;
 
+    #endregion
+
+    [SerializeField] private GameObject singleFinishPanel;
+    [SerializeField] private GameObject singleData;
+
+    private int startTime;
+
     private static int roomID;
+    public static List<SingleQuesiton> singleQuestions;
+    private List<Answer> singleAnswers = new List<Answer>();
 
     Question question = new Question(-1);
 
+    public static bool isSinglePlayer;
+
+    private int index;
+
     private void Start()
     {
-        ApiGetQuestion(Answer.None);
+        if (singleQuestions == null)
+            ApiGetQuestion(Answer.None);
+        else
+        {
+
+            index = 0;
+            MenuUpdate(singleQuestions[index]);
+            singleQuestions.Clear();
+            startTime = GameManager.Timer;
+            
+        }
     }
 
     public static void SetRoomID(int roomID)
@@ -64,7 +89,64 @@ public class GameMenu : MonoBehaviour
     public void answerButton(GameObject btn)
     {
 
-        ApiGetQuestion(StringToAnswer(btn.name));
+        if (isSinglePlayer)
+        {
+            index++;
+            singleAnswers.Add(StringToAnswer(btn.name));
+
+            if (singleQuestions.Count > index)
+                MenuUpdate(singleQuestions[index]);
+            else
+            {
+
+                //simdiki zamandan oyun bitinceki zamaný çýkartýp sorularu çözdügü total süreyi buluyoruz.
+                int finishTime = GameManager.Timer - startTime;
+
+                //puan hesaplama.
+
+                int point = 0;
+
+                for (int i = 0; i < singleQuestions.Count; i++)
+                {
+
+                    if (singleQuestions[i].currentAnswer == AnswerToString(singleAnswers[i]))
+                        point += 10;
+                    else
+                        point -= 3;
+
+                }
+
+                Debug.Log(point + " / " + finishTime + " - " + GameManager.Timer);
+
+                // point 0 ýn altýna hiçbir zaman inmemli
+                if (point < 0)
+                    point = 0;
+
+                 
+                //Single Player Ekrana Verileri Yazma
+                singleFinishPanel.SetActive(true);
+
+                FinishDataWrite data = singleData.GetComponent<FinishDataWrite>();
+
+                Debug.Log(point + " / " + finishTime + " - " + GameManager.Timer);
+
+                data.CreateDates("Game Over",
+                    new FinishDataWrite.Data("Point : ", point.ToString()),
+                    new FinishDataWrite.Data("Finish Time : ", finishTime.ToString()));
+
+                //apiye veriler veriliyor.
+                ApiConnection.Connection<SingleGetApiData>("singlePlayer.php", new SingleGetApiData(GameManager.Token, point), (value) =>
+                {
+
+                });
+
+                singleQuestions = null;
+                isSinglePlayer = false;
+            }
+
+        }
+        else
+            ApiGetQuestion(StringToAnswer(btn.name));
 
     }
 
@@ -150,7 +232,7 @@ public class GameMenu : MonoBehaviour
             );
 
         finishPanelEnemy.GetComponent<FinishDataWrite>().CreateDates(
-            "Point",
+            finish.enemyUsername,
             new FinishDataWrite.Data("Point", finish.enemyPoint)
             );
 
@@ -178,7 +260,7 @@ public class GameMenu : MonoBehaviour
 
     }
 
-    private Answer StringToAnswer(string str)
+    public static Answer StringToAnswer(string str)
     {
 
         switch (str)
@@ -198,7 +280,7 @@ public class GameMenu : MonoBehaviour
 
     }
 
-    private string AnswerToString(Answer answer)
+    public static string AnswerToString(Answer answer)
     {
 
         switch (answer)
