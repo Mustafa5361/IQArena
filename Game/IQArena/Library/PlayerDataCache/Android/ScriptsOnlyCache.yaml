@@ -10,7 +10,6 @@ ScriptsOnlyBuild:
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Animation.Runtime.dll:
-    - UnityEngine.U2D.Animation.BufferManager
     - UnityEngine.U2D.Animation.SpriteSkinComposite
     - UnityEngine.U2D.Animation.SpriteSkinUpdateHelper
     Unity.2D.IK.Editor.dll:
@@ -254,9 +253,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 23010}
     - Class: 114
-      Script: {instanceID: 24882}
+      Script: {instanceID: 24896}
     - Class: 114
-      Script: {instanceID: 24890}
+      Script: {instanceID: 24904}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1632,6 +1631,12 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 59cf011bee8868b06edccccf90480643
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GetValuesUnit
+  - hash:
+      serializedVersion: 2
       Hash: 41d52c1ebb69de77c64ae1d16f248e28
     assemblyName: Assembly-CSharp
     namespaceName: 
@@ -1648,15 +1653,9 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: TabNavigation
-  - hash:
-      serializedVersion: 2
-      Hash: 59cf011bee8868b06edccccf90480643
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: GetValuesUnit
   platform: 13
   scenePathNames:
   - Assets/Scenes/Mobile/Login.unity
   - Assets/Scenes/Mobile/Game.unity
   - Assets/Scenes/Mobile/MainMenu.unity
-  playerPath: C:/Users/ACER/Desktop/IQArena Deneme/APK/Quisstorm.apk
+  playerPath: "C:/Users/hsnak/OneDrive/Masa\xFCst\xFC/IQArena Deneme/APK/Quisstorm.apk"
