@@ -50,14 +50,13 @@ public class GameMenu : MonoBehaviour
 
     private void Start()
     {
-        if (singleQuestions == null)
+        if (isSinglePlayer == false)
             ApiGetQuestion(Answer.None);
         else
         {
 
             index = 0;
             MenuUpdate(singleQuestions[index]);
-            singleQuestions.Clear();
             startTime = GameManager.Timer;
             
         }
@@ -99,6 +98,8 @@ public class GameMenu : MonoBehaviour
             else
             {
 
+                Debug.Log("Enswer Count : " + singleAnswers.Count + " / birinci asnwer : " + AnswerToString(singleAnswers[0]) + " / Question Answer : " + singleQuestions[0].correctAnswer);
+
                 //simdiki zamandan oyun bitinceki zamaný çýkartýp sorularu çözdügü total süreyi buluyoruz.
                 int finishTime = GameManager.Timer - startTime;
 
@@ -109,7 +110,7 @@ public class GameMenu : MonoBehaviour
                 for (int i = 0; i < singleQuestions.Count; i++)
                 {
 
-                    if (singleQuestions[i].currentAnswer == AnswerToString(singleAnswers[i]))
+                    if (singleQuestions[i].correctAnswer == AnswerToString(singleAnswers[i]))
                         point += 10;
                     else
                         point -= 3;

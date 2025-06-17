@@ -2,7 +2,7 @@
 public class SingleQuesiton : Question
 {
 
-    public string currentAnswer;
+    public string correctAnswer;
 
 }
 

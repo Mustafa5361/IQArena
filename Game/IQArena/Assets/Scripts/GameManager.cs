@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     IEnumerator TimerFlow()
     {
 
-        while (timer > 0)
+        while (timer >= 0)
         {
 
             yield return new WaitForSeconds(1f);
