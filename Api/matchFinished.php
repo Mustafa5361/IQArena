@@ -42,6 +42,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
             [$winner, $loser] = ($players[0]["point"] > $players[1]["point"]) ? [$players[0], $players[1]] : [$players[1], $players[0]];
             
+            $winnerTime = $db -> fetch(
+                "SELECT sum(answertime) FROM answers WHERE roomplayerID = :roomplayerID",
+                [
+                    "roomplayerID" => $winner["roomplayerID"]
+                ]
+            );
+            $loserTime = $db -> fetch(
+                "SELECT sum(answertime) FROM answers WHERE roomplayerID = :roomplayerID",
+                [
+                    "roomplayerID" => $loser["roomplayerID"]
+                ]
+            );
+
             $calculation = new cupCalculation();
             $calculate = $calculation->calculate($winner["point"], $loser["point"]);
 
@@ -53,6 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                         "enemyUsername" => $playerIsWinner ? $loser["username"] : $winner["username"],
                         "thisPoint" => $playerIsWinner ? $winner["point"] : $loser["point"],
                         "enemyPoint" => $playerIsWinner ? $loser["point"] : $winner["point"],
+                        "thisTime" => $playerIsWinner ? $winnertime : $loserTime,
+                        "enemyTime" => $playerIsWinner ? $loserTime : $winnerTime,
                         "thisCupChange" => $playerIsWinner ? $calculate["cupGain"] : -$calculate["cupLose"],
                         "thisStatus" => $playerIsWinner ? "Win" : "Lose",
                     ]]);

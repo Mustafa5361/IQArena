@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MatchHistory : MonoBehaviour
+public class MatchHistoryData : MonoBehaviour
 {
     [SerializeField] private Text win;
     [SerializeField] private Text cup;

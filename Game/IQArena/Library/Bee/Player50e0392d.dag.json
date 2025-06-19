@@ -457,7 +457,18 @@
         449,
         450,
         451,
-        452
+        452,
+        453,
+        454,
+        455,
+        456,
+        457,
+        458,
+        459,
+        460,
+        461,
+        462,
+        463
       ],
       "OverwriteOutputs": false,
       "DebugActionIndex": 0
@@ -10323,7 +10334,7 @@
       "DisplayName": "Copying app_icon.png",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2022.3.10f1/Editor/Data/PlaybackEngines/AndroidPlayer/Apk/res/mipmap-mdpi/app_icon.png"
+        "Temp/StagingArea/res.mdpi.app_icon.png"
       ],
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-mdpi/app_icon.png"
@@ -10355,6 +10366,138 @@
       "DebugActionIndex": 426
     },
     {
+      "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-ldpi/app_icon.png",
+      "DisplayName": "Copying app_icon.png",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/res.ldpi.app_icon.png"
+      ],
+      "Outputs": [
+        "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-ldpi/app_icon.png"
+      ],
+      "DebugActionIndex": 427
+    },
+    {
+      "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-hdpi/app_icon.png",
+      "DisplayName": "Copying app_icon.png",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/res.hdpi.app_icon.png"
+      ],
+      "Outputs": [
+        "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-hdpi/app_icon.png"
+      ],
+      "DebugActionIndex": 428
+    },
+    {
+      "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xhdpi/app_icon.png",
+      "DisplayName": "Copying app_icon.png",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/res.xhdpi.app_icon.png"
+      ],
+      "Outputs": [
+        "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xhdpi/app_icon.png"
+      ],
+      "DebugActionIndex": 429
+    },
+    {
+      "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxhdpi/app_icon.png",
+      "DisplayName": "Copying app_icon.png",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/res.xxhdpi.app_icon.png"
+      ],
+      "Outputs": [
+        "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxhdpi/app_icon.png"
+      ],
+      "DebugActionIndex": 430
+    },
+    {
+      "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxxhdpi/app_icon.png",
+      "DisplayName": "Copying app_icon.png",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/res.xxxhdpi.app_icon.png"
+      ],
+      "Outputs": [
+        "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxxhdpi/app_icon.png"
+      ],
+      "DebugActionIndex": 431
+    },
+    {
+      "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-ldpi/app_icon_round.png",
+      "DisplayName": "Copying app_icon_round.png",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/res.ldpi.app_icon_round.png"
+      ],
+      "Outputs": [
+        "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-ldpi/app_icon_round.png"
+      ],
+      "DebugActionIndex": 432
+    },
+    {
+      "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-mdpi/app_icon_round.png",
+      "DisplayName": "Copying app_icon_round.png",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/res.mdpi.app_icon_round.png"
+      ],
+      "Outputs": [
+        "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-mdpi/app_icon_round.png"
+      ],
+      "DebugActionIndex": 433
+    },
+    {
+      "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-hdpi/app_icon_round.png",
+      "DisplayName": "Copying app_icon_round.png",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/res.hdpi.app_icon_round.png"
+      ],
+      "Outputs": [
+        "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-hdpi/app_icon_round.png"
+      ],
+      "DebugActionIndex": 434
+    },
+    {
+      "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xhdpi/app_icon_round.png",
+      "DisplayName": "Copying app_icon_round.png",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/res.xhdpi.app_icon_round.png"
+      ],
+      "Outputs": [
+        "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xhdpi/app_icon_round.png"
+      ],
+      "DebugActionIndex": 435
+    },
+    {
+      "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxhdpi/app_icon_round.png",
+      "DisplayName": "Copying app_icon_round.png",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/res.xxhdpi.app_icon_round.png"
+      ],
+      "Outputs": [
+        "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxhdpi/app_icon_round.png"
+      ],
+      "DebugActionIndex": 436
+    },
+    {
+      "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxxhdpi/app_icon_round.png",
+      "DisplayName": "Copying app_icon_round.png",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/res.xxxhdpi.app_icon_round.png"
+      ],
+      "Outputs": [
+        "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxxhdpi/app_icon_round.png"
+      ],
+      "DebugActionIndex": 437
+    },
+    {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-ldpi/ic_launcher_background.png",
       "DisplayName": "Copying ic_launcher_background.png",
       "ActionType": "CopyFiles",
@@ -10364,7 +10507,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-ldpi/ic_launcher_background.png"
       ],
-      "DebugActionIndex": 427
+      "DebugActionIndex": 438
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-hdpi/ic_launcher_background.png",
@@ -10376,7 +10519,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-hdpi/ic_launcher_background.png"
       ],
-      "DebugActionIndex": 428
+      "DebugActionIndex": 439
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xhdpi/ic_launcher_background.png",
@@ -10388,7 +10531,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xhdpi/ic_launcher_background.png"
       ],
-      "DebugActionIndex": 429
+      "DebugActionIndex": 440
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxhdpi/ic_launcher_background.png",
@@ -10400,7 +10543,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxhdpi/ic_launcher_background.png"
       ],
-      "DebugActionIndex": 430
+      "DebugActionIndex": 441
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxxhdpi/ic_launcher_background.png",
@@ -10412,7 +10555,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxxhdpi/ic_launcher_background.png"
       ],
-      "DebugActionIndex": 431
+      "DebugActionIndex": 442
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-ldpi/ic_launcher_foreground.png",
@@ -10424,7 +10567,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-ldpi/ic_launcher_foreground.png"
       ],
-      "DebugActionIndex": 432
+      "DebugActionIndex": 443
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-hdpi/ic_launcher_foreground.png",
@@ -10436,7 +10579,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-hdpi/ic_launcher_foreground.png"
       ],
-      "DebugActionIndex": 433
+      "DebugActionIndex": 444
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png",
@@ -10448,7 +10591,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png"
       ],
-      "DebugActionIndex": 434
+      "DebugActionIndex": 445
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png",
@@ -10460,7 +10603,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png"
       ],
-      "DebugActionIndex": 435
+      "DebugActionIndex": 446
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
@@ -10472,7 +10615,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/launcher/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png"
       ],
-      "DebugActionIndex": 436
+      "DebugActionIndex": 447
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/jniLibs/armeabi-v7a/libmain.so",
@@ -10484,7 +10627,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/jniLibs/armeabi-v7a/libmain.so"
       ],
-      "DebugActionIndex": 437
+      "DebugActionIndex": 448
     },
     {
       "Annotation": "SourceBuildPlayerFiles",
@@ -10492,14 +10635,14 @@
       "Inputs": [],
       "Outputs": [],
       "ToBuildDependencies": [
-        437,
-        439,
-        445,
-        446,
-        447
+        448,
+        450,
+        456,
+        457,
+        458
       ],
       "OverwriteOutputs": false,
-      "DebugActionIndex": 438
+      "DebugActionIndex": 449
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/jniLibs/armeabi-v7a/libunity.so",
@@ -10511,7 +10654,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/jniLibs/armeabi-v7a/libunity.so"
       ],
-      "DebugActionIndex": 439
+      "DebugActionIndex": 450
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/jniLibs/armeabi-v7a/libmonobdwgc-2.0.so",
@@ -10523,7 +10666,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/jniLibs/armeabi-v7a/libmonobdwgc-2.0.so"
       ],
-      "DebugActionIndex": 440
+      "DebugActionIndex": 451
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/jniLibs/armeabi-v7a/libMonoPosixHelper.so",
@@ -10535,7 +10678,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/jniLibs/armeabi-v7a/libMonoPosixHelper.so"
       ],
-      "DebugActionIndex": 441
+      "DebugActionIndex": 452
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/jniLibs/armeabi-v7a/libmono-native.so",
@@ -10547,20 +10690,20 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/jniLibs/armeabi-v7a/libmono-native.so"
       ],
-      "DebugActionIndex": 442
+      "DebugActionIndex": 453
     },
     {
       "Annotation": "WriteText Library/Bee/artifacts/csharpactions/LauncherManifestDiag.txt_zvqu.info",
       "DisplayName": "Writing LauncherManifestDiag.txt_zvqu.info",
       "ActionType": "WriteFile",
       "PayloadOffset": 253871,
-      "PayloadLength": 21650,
+      "PayloadLength": 21649,
       "PayloadDebugContentSnippet": "{\"AndroidPlayerBuildProgram.Ac",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/csharpactions/LauncherManifestDiag.txt_zvqu.info"
       ],
-      "DebugActionIndex": 443
+      "DebugActionIndex": 454
     },
     {
       "Annotation": "Generate Manifests Library/Bee/artifacts/Android/Manifest/LauncherManifestDiag.txt (+3 others)",
@@ -10798,12 +10941,12 @@
         401,
         403,
         405,
-        443
+        454
       ],
       "OverwriteOutputs": false,
       "AllowUnexpectedOutput": true,
       "Env": [],
-      "DebugActionIndex": 444
+      "DebugActionIndex": 455
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/symbols/armeabi-v7a/libmain.so",
@@ -10815,7 +10958,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/symbols/armeabi-v7a/libmain.so"
       ],
-      "DebugActionIndex": 445
+      "DebugActionIndex": 456
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/symbols/armeabi-v7a/libmonobdwgc-2.0.so",
@@ -10827,7 +10970,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/symbols/armeabi-v7a/libmonobdwgc-2.0.so"
       ],
-      "DebugActionIndex": 446
+      "DebugActionIndex": 457
     },
     {
       "Annotation": "CopyFiles D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/symbols/armeabi-v7a/libunity.so",
@@ -10839,7 +10982,7 @@
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/symbols/armeabi-v7a/libunity.so"
       ],
-      "DebugActionIndex": 447
+      "DebugActionIndex": 458
     },
     {
       "Annotation": "7z D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/symbols.zip",
@@ -10855,27 +10998,27 @@
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/symbols.zip"
       ],
       "ToBuildDependencies": [
-        445,
-        446,
-        447
+        456,
+        457,
+        458
       ],
       "OverwriteOutputs": false,
       "AllowUnexpectedOutput": true,
       "Env": [],
-      "DebugActionIndex": 448
+      "DebugActionIndex": 459
     },
     {
       "Annotation": "WriteText Library/Bee/artifacts/csharpactions/unity_app_guid_o05w.info",
       "DisplayName": "Writing unity_app_guid_o05w.info",
       "ActionType": "WriteFile",
-      "PayloadOffset": 275613,
+      "PayloadOffset": 275612,
       "PayloadLength": 26705,
       "PayloadDebugContentSnippet": "{\"System.Object\":null,\"Bee.Tun",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/csharpactions/unity_app_guid_o05w.info"
       ],
-      "DebugActionIndex": 449
+      "DebugActionIndex": 460
     },
     {
       "Annotation": "GuidGenerator D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/assets/bin/Data/unity_app_guid",
@@ -11089,25 +11232,25 @@
       ],
       "ToBuildDependencies": [
         5,
-        449
+        460
       ],
       "OverwriteOutputs": false,
       "AllowUnexpectedOutput": true,
       "Env": [],
-      "DebugActionIndex": 450
+      "DebugActionIndex": 461
     },
     {
       "Annotation": "WriteText D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/resources/META-INF/com.android.games.engine.build_fingerprint",
       "DisplayName": "Writing com.android.games.engine.build_fingerprint",
       "ActionType": "WriteFile",
-      "PayloadOffset": 302519,
+      "PayloadOffset": 302518,
       "PayloadLength": 70,
       "PayloadDebugContentSnippet": "2022.3.10f1;Mono;Development;S",
       "Inputs": [],
       "Outputs": [
         "D:/Projelerim/GitHub/Unity/IQArena/Game/IQArena/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/resources/META-INF/com.android.games.engine.build_fingerprint"
       ],
-      "DebugActionIndex": 451
+      "DebugActionIndex": 462
     },
     {
       "Annotation": "Player",
@@ -11442,20 +11585,31 @@
         435,
         436,
         437,
+        438,
         439,
         440,
         441,
         442,
+        443,
         444,
         445,
         446,
         447,
         448,
         450,
-        451
+        451,
+        452,
+        453,
+        455,
+        456,
+        457,
+        458,
+        459,
+        461,
+        462
       ],
       "OverwriteOutputs": false,
-      "DebugActionIndex": 452
+      "DebugActionIndex": 463
     }
   ],
   "FileSignatures": [
@@ -12088,8 +12242,8 @@
   ],
         "NamedNodes": {
           "all_tundra_nodes": 0,
-          "SourceBuildPlayerFiles": 438,
-          "Player": 452
+          "SourceBuildPlayerFiles": 449,
+          "Player": 463
         }
 ,  "DefaultNodes": [
     0

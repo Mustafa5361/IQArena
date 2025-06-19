@@ -22,6 +22,10 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject MatchPanel; // geçmiþin göstrileceði liste
     [SerializeField] private GameObject MatchPlayerPlanel; // geçmiþ
 
+    [SerializeField] private Text user;
+    [SerializeField] private Text point;
+    [SerializeField] private Text rank;
+
     [SerializeField] private GameObject unitBtn;
     private List<GameObject> unitBtns = new List<GameObject>();
 
@@ -57,6 +61,7 @@ public class MainMenuManager : MonoBehaviour
 
         unitsPanel.SetActive(true);
     }
+
     public void UnitsPanelClose()
     {
         unitsPanel.SetActive(false);
@@ -130,19 +135,29 @@ public class MainMenuManager : MonoBehaviour
 
         float height = 0;
 
-        foreach (PlayerHistory matcchHistory in this.MatchHistory1)
+        ApiConnection.Connection<LoginGetData, ProfilData>("playerInformation.php", new LoginGetData { token = GameManager.Token }, (value) => 
         {
 
-            GameObject go = Instantiate(MatchPlayerPlanel, MatchPanel.transform);
+            user.text = value.userName;
+            point.text = value.point;
+            rank.text = value.cup;
 
-            go.GetComponent<MatchHistory>().SetData(matcchHistory.win,matcchHistory.cup,matcchHistory.player1UserName, matcchHistory.player2UserName, matcchHistory.player1Time, matcchHistory.player2Time, matcchHistory.player1Point,
-                 matcchHistory.player2Point);
+            foreach (var matchHistory in value.matchHistories)
+            {
 
-            MatchHistoryObject.Add(go);
+                GameObject go = Instantiate(MatchPlayerPlanel, MatchPanel.transform);
 
-            height += (go.GetComponent<RectTransform>().sizeDelta.y + 31);
+                go.GetComponent<MatchHistoryData>().SetData(matchHistory.thisStatus, matchHistory.thisCup, matchHistory.thisUsername, matchHistory.enemyUsername,matchHistory.thisAnswerTime,matchHistory.enemyAnswerTime, matchHistory.thisPoint, matchHistory.enemyPoint);
 
-        }
+                MatchHistoryObject.Add(go);
+
+                height += (go.GetComponent<RectTransform>().sizeDelta.y + 31);
+
+            }
+
+        });
+
+        
 
         RectTransform rt = MatchPanel.GetComponent<RectTransform>();
         Vector2 sizeDelta = rt.sizeDelta;

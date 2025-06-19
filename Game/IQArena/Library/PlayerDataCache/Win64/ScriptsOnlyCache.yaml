@@ -3,7 +3,9 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - ArrangementData
     - FinishDataWrite
+    - GameManager
     - GameMenu
+    - GetValuesUnit
     - LoginManager
     - MainMenuManager
     - MatchHistory
@@ -164,6 +166,9 @@ ScriptsOnlyBuild:
     methodName: answerButton
   - assembly: Assembly-CSharp
     fullTypeName: GameMenu
+    methodName: MainMenuOpen
+  - assembly: Assembly-CSharp
+    fullTypeName: GameMenu
     methodName: answerButton
   - assembly: Assembly-CSharp
     fullTypeName: GameMenu
@@ -179,16 +184,22 @@ ScriptsOnlyBuild:
     methodName: QuitPanel
   - assembly: Assembly-CSharp
     fullTypeName: GameMenu
-    methodName: MainMenuOpen
-  - assembly: Assembly-CSharp
-    fullTypeName: GameMenu
     methodName: answerButton
+  - assembly: Assembly-CSharp
+    fullTypeName: GetValuesUnit
+    methodName: UnitGetApi
   - assembly: Assembly-CSharp
     fullTypeName: MainMenuManager
     methodName: ProfileMenuClose
   - assembly: Assembly-CSharp
     fullTypeName: MainMenuManager
     methodName: matchExpectionmenuClose
+  - assembly: Assembly-CSharp
+    fullTypeName: MainMenuManager
+    methodName: UnitsPanelClose
+  - assembly: Assembly-CSharp
+    fullTypeName: MainMenuManager
+    methodName: UnitsPanelOpen
   - assembly: Assembly-CSharp
     fullTypeName: MainMenuManager
     methodName: ProfileMenuOpen
@@ -236,25 +247,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 16686}
     - Class: 114
-      Script: {instanceID: 17944}
+      Script: {instanceID: 17948}
     - Class: 114
-      Script: {instanceID: 18204}
+      Script: {instanceID: 18208}
     - Class: 114
-      Script: {instanceID: 18572}
+      Script: {instanceID: 18576}
     - Class: 114
-      Script: {instanceID: 21116}
+      Script: {instanceID: 21126}
     - Class: 114
-      Script: {instanceID: 21836}
+      Script: {instanceID: 21848}
     - Class: 114
-      Script: {instanceID: 22060}
+      Script: {instanceID: 22072}
     - Class: 114
-      Script: {instanceID: 22120}
+      Script: {instanceID: 22132}
     - Class: 114
-      Script: {instanceID: 22476}
+      Script: {instanceID: 22490}
     - Class: 114
-      Script: {instanceID: 23016}
+      Script: {instanceID: 23030}
     - Class: 114
-      Script: {instanceID: 24332}
+      Script: {instanceID: 24346}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -295,35 +306,37 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 16686}
     - Class: 114
-      Script: {instanceID: 17412}
+      Script: {instanceID: 17416}
     - Class: 114
-      Script: {instanceID: 17944}
+      Script: {instanceID: 17948}
     - Class: 114
-      Script: {instanceID: 18204}
+      Script: {instanceID: 18208}
     - Class: 114
-      Script: {instanceID: 18260}
+      Script: {instanceID: 18264}
     - Class: 114
-      Script: {instanceID: 18572}
+      Script: {instanceID: 18576}
     - Class: 114
-      Script: {instanceID: 19714}
+      Script: {instanceID: 19724}
     - Class: 114
-      Script: {instanceID: 19856}
+      Script: {instanceID: 19866}
     - Class: 114
-      Script: {instanceID: 20182}
+      Script: {instanceID: 20192}
     - Class: 114
-      Script: {instanceID: 20948}
+      Script: {instanceID: 20958}
     - Class: 114
-      Script: {instanceID: 21116}
+      Script: {instanceID: 21126}
     - Class: 114
-      Script: {instanceID: 21836}
+      Script: {instanceID: 21218}
     - Class: 114
-      Script: {instanceID: 22060}
+      Script: {instanceID: 21492}
     - Class: 114
-      Script: {instanceID: 22476}
+      Script: {instanceID: 21848}
     - Class: 114
-      Script: {instanceID: 23994}
+      Script: {instanceID: 22072}
     - Class: 114
-      Script: {instanceID: 26156}
+      Script: {instanceID: 22490}
+    - Class: 114
+      Script: {instanceID: 24008}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -362,27 +375,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 16686}
     - Class: 114
-      Script: {instanceID: 17944}
+      Script: {instanceID: 17948}
     - Class: 114
-      Script: {instanceID: 18204}
+      Script: {instanceID: 18208}
     - Class: 114
-      Script: {instanceID: 18572}
+      Script: {instanceID: 18576}
     - Class: 114
-      Script: {instanceID: 18904}
+      Script: {instanceID: 18908}
     - Class: 114
-      Script: {instanceID: 19540}
+      Script: {instanceID: 19544}
     - Class: 114
-      Script: {instanceID: 20036}
+      Script: {instanceID: 19696}
     - Class: 114
-      Script: {instanceID: 21836}
+      Script: {instanceID: 20046}
     - Class: 114
-      Script: {instanceID: 22476}
+      Script: {instanceID: 21848}
     - Class: 114
-      Script: {instanceID: 22650}
+      Script: {instanceID: 22490}
     - Class: 114
-      Script: {instanceID: 23016}
+      Script: {instanceID: 22664}
     - Class: 114
-      Script: {instanceID: 23844}
+      Script: {instanceID: 23030}
+    - Class: 114
+      Script: {instanceID: 23858}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -864,6 +879,12 @@ ScriptsOnlyBuild:
     className: SpriteShapeGeometryCache
   - hash:
       serializedVersion: 2
+      Hash: 59cf011bee8868b06edccccf90480643
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GetValuesUnit
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1182,6 +1203,12 @@ ScriptsOnlyBuild:
     className: UnityOnDeselectMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: TabNavigation
+  - hash:
+      serializedVersion: 2
       Hash: f6831ac80ec81c5d5b370c0ed0fee997
     assemblyName: Unity.VisualScripting.State
     namespaceName: Unity.VisualScripting
@@ -1296,7 +1323,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
-      Hash: 7f21f8e68bae2f8e74a7498cd2662425
+      Hash: c4c796f2d2536820c08e44ccecf9ff5a
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: MainMenuManager
@@ -1554,7 +1581,7 @@ ScriptsOnlyBuild:
     className: VertexColorCycler
   - hash:
       serializedVersion: 2
-      Hash: 81a7f0715fc2c0c2b97e1f57a0a2b6c5
+      Hash: 41d52c1ebb69de77c64ae1d16f248e28
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: GameMenu
@@ -1642,15 +1669,9 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: TabNavigation
   platform: 19
   scenePathNames:
   - Assets/Scenes/Computer/Login.unity
   - Assets/Scenes/Computer/Game.unity
   - Assets/Scenes/Computer/MainMenu.unity
-  playerPath: C:/Users/ACER/Desktop/IQArena Deneme/IQArena.exe
+  playerPath: C:/Users/ACER/Desktop/IQArena Deneme/QuizStorm.exe

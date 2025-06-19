@@ -25,15 +25,9 @@ public static class FileSystem
 
         string folderPath = Application.dataPath + "/Saves/";
 
-        if (FileControl(folderPath))
-        {
-            string jsonFormat = JsonUtility.ToJson(Value, true);
-            File.WriteAllText(folderPath + name + ".json", jsonFormat);
-            return;
-        }
-
-        return;
-        throw new System.Exception("File oluþturulamadý.");
+        FileControl(folderPath);
+        string jsonFormat = JsonUtility.ToJson(Value, true);
+        File.WriteAllText(folderPath + name + ".json", jsonFormat);
 
     }
 
@@ -94,15 +88,8 @@ public static class FileSystem
 
     public static bool GetFile(string name)
     {
-
-        if (Directory.GetFiles(Application.dataPath + "/Saves/" + name + ".json").Length > 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        string path = Path.Combine(Application.dataPath, "Saves", name + ".json");
+        return File.Exists(path);
     }
 
     private class SaveList<T>

@@ -54,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 }
 
             }
-            else
+            else // şifremi unuttum.
             {
 
                 if(isset($value -> password))
@@ -101,10 +101,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                              FROM activationcode 
                              JOIN player ON activationcode.playerID = player.playerID 
                              WHERE mail = :mail AND activationCode = :activationCode
-                             and isDeleted = :isdeleted",
+                             and isDeleted = :isDeleted",
                             [
-                                "mail" => $value->mail,
-                                "activationCode" => $value->activationCode,
+                                "mail" => $value -> mail,
+                                "activationCode" => $value -> activationCode,
                                 "isDeleted" => false
                             ]
                         );
@@ -163,7 +163,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             }
             else
             {
-                echo json_encode(["success" => true, "token" => $token->CreateToken($loginData["playerID"]) , "message" => "login successful"]);
+                if($loginData["playerID"] == 1)
+                {
+                    echo json_encode(["success" => true, "token" => $token->CreateToken($loginData["playerID"]), "isAdmin" => true, "message" => "login successful"]);
+                }
+                else
+                {
+                    echo json_encode(["success" => true, "token" => $token->CreateToken($loginData["playerID"]), "isAdmin" => false, "message" => "login successful"]);
+                }
+                
             }
 
         }
@@ -174,12 +182,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         if(isset($value -> activationCode)) // hesabı kalıcı bir şekilde oluşturmma
         {
 
-            $query = $db -> fetch("select username, password, mail from tempPlayer where token = :token and activationCode = :activationCode ", ["token" => $value -> token, "activationCode" => $value -> activationCode]);
+            $query = $db -> fetch("select username, password, mail from tempplayer where token = :token and activationCode = :activationCode ", ["token" => $value -> token, "activationCode" => $value -> activationCode]);
 
             if($query != false)
             {
                     
-            $token = new Token();
+                $token = new Token();
 
                 $db -> delete("tempplayer",$query);
                 $query = $db -> insert("player", $query);
@@ -193,7 +201,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         }
         else
         {
-            $db -> delete("tokens", ["token" => $value -> token]);
+
+            if($value -> logOut)
+            {
+                $db -> delete("tokens", ["token" => $value -> token]);
+            }
+            else
+            {
+                $query = $db -> fetch("SELECT token from tokens where token = :token",
+                [
+                    "token" => $value -> token
+                ]);
+                
+                if($query != false)
+                {
+                     echo json_encode(["success" => true, "token" => $value -> token, "message" => "login successful"]);
+                }
+                else
+                {
+                    echo json_encode(["success" => false, "token" => "", "message" => "login error"]);
+                }
+            }
+            
         }
 
 

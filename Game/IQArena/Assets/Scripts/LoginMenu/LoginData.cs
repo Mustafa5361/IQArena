@@ -35,6 +35,8 @@ class LoginGetData
     public bool login;
     public string token;
 
+    public LoginGetData() { }
+
     public LoginGetData(bool login, string token)
     {
         this.login = login;

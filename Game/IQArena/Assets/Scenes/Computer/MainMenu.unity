@@ -4493,6 +4493,9 @@ MonoBehaviour:
   RankPlayerPlanel: {fileID: 8304255897779063313, guid: 95929de301470cd46bc889397acc615f, type: 3}
   MatchPanel: {fileID: 1900988221}
   MatchPlayerPlanel: {fileID: 2383856732221090468, guid: 591cb8cf1c9cdb148ad1c23f18af95aa, type: 3}
+  user: {fileID: 1250688936}
+  point: {fileID: 1566303489}
+  rank: {fileID: 1735916918}
   unitBtn: {fileID: 6089037027138465232, guid: cec627778af9f5143b63f4ec842cf043, type: 3}
   MatchHistory1:
   - win: Win
@@ -5631,7 +5634,7 @@ GameObject:
   - component: {fileID: 1566303490}
   - component: {fileID: 1566303489}
   m_Layer: 5
-  m_Name: ' RankBadgePanel'
+  m_Name: PointPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5689,7 +5692,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Rank Rozeti
+  m_Text: Point
 --- !u!222 &1566303490
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6218,85 +6221,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624329449}
   m_CullTransparentMesh: 1
---- !u!1 &1631470515
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1631470516}
-  - component: {fileID: 1631470518}
-  - component: {fileID: 1631470517}
-  m_Layer: 5
-  m_Name: ' CurrentRankPanel'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1631470516
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631470515}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2022666474}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -281}
-  m_SizeDelta: {x: -450, y: -785}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1631470517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631470515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.11764707, g: 0.11764707, b: 0.11764707, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
-    m_FontSize: 50
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 4
-    m_MaxSize: 50
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "G\xFCncel Rank"
---- !u!222 &1631470518
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631470515}
-  m_CullTransparentMesh: 0
 --- !u!1 &1636640884
 GameObject:
   m_ObjectHideFlags: 0
@@ -6553,7 +6477,7 @@ GameObject:
   - component: {fileID: 1735916919}
   - component: {fileID: 1735916918}
   m_Layer: 5
-  m_Name: ' HighRankPanel'
+  m_Name: RankPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6611,7 +6535,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "En y\xFCksek rank"
+  m_Text: Rank
 --- !u!222 &1735916919
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7319,7 +7243,6 @@ RectTransform:
   - {fileID: 1250688935}
   - {fileID: 1566303488}
   - {fileID: 1735916917}
-  - {fileID: 1631470516}
   m_Father: {fileID: 2112146271}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

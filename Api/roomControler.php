@@ -109,39 +109,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
                 echo json_encode(["Question" => null , "Finish" => ["finished" => false, "thisPoint" => $totalScore]]);
 
-                /*
-
-                $otherPlayer = $db->fetch("SELECT point, playerID FROM roomplayer WHERE roomID = :roomID AND roomplayerID != :roomplayerID", [
-                    "roomID" => $roomID, "roomplayerID" => $roomPlayerID
-                ]);
-
-                if ($otherPlayer && isset($otherPlayer["point"])) {
-                    $players = $db->fetchAll("SELECT * FROM roomplayer rp INNER JOIN player p ON p.playerID = rp.playerID WHERE roomID = :roomID", ["roomID" => $roomID]);
-                    [$winner, $loser] = ($players[0]["point"] > $players[1]["point"]) ? [$players[0], $players[1]] : [$players[1], $players[0]];
-
-                    $calculation = new cupCalculation();
-                    $calculate = $calculation->calculate($winner["cup"], $loser["cup"]);
-
-                    WinnerLoser($db, $winner, $loser, $calculate["cupGain"], $calculate["cupLose"], $roomID);
-                    
-
-                    //oyun bittiğinde bilgileri çekme 29.05.25
-                    $playerIsWinner = $winner["playerID"] == $playerID;
-
-                    echo json_encode(["Question" => null, "Finished" => [
-                        "finished" => true,
-                        "thisUsername" => $playerIsWinner ? $winner["username"] : $loser["username"],
-                        "enemyUsername" => $playerIsWinner ? $loser["username"] : $winner["username"],
-                        "thisPoint" => $playerIsWinner ? $winner["point"] : $loser["point"],
-                        "enemyPoint" => $playerIsWinner ? $loser["point"] : $winner["point"],
-                        "thisCupChange" => $playerIsWinner ? $calculate["cupGain"] : -$calculate["cupLose"],
-                        "thisStatus" => $playerIsWinner ? "Win" : "Lose",
-                        "roomID" => $roomID
-                    ]]);
-                    return;
-                    
-                }
-                */
             }
         } else {
             $question = $db->fetch("SELECT q.questionID, q.question, q.answerA, q.answerB, q.answerC, q.answerD FROM question q INNER JOIN matchquestions m ON q.questionID = m.questionID WHERE m.roomID = :roomID AND m.questionIndex = 0", ["roomID" => $value->roomID]);

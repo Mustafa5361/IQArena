@@ -25,10 +25,14 @@ public class LoginManager : MonoBehaviour
     [SerializeField] private InputField passwordControlSignIn;
     [SerializeField] private InputField passwordConfirmationInput;
     [SerializeField] private InputField passworCondirmationnRepead;
+    [SerializeField] private InputField passwordResetMail;
 
     [SerializeField] private Text ActivationCodeTxt;
 
     [SerializeField] private Toggle activationControlToggle;
+
+    private string thisMail;
+    private string thisActivationCode;
 
     private bool isPasswordVisible = false;
     private bool isPasswordSignInVisible = false;
@@ -103,6 +107,7 @@ public class LoginManager : MonoBehaviour
                     if (activationControlToggle.isOn) // hesabý kaydet açýkmý
                     {
 
+                        SaveToken token = new SaveToken { token = value.token };
                         FileSystem.JsonSave("Token", value.token);
 
                     }
@@ -164,13 +169,15 @@ public class LoginManager : MonoBehaviour
         if (ActivationCodeTxt.text.Trim().Length == 6)
         {
 
-            ApiConnection.Connection<SendToActivalionCode, LoginSetData>("login.php", new SendToActivalionCode(GameManager.Token,ActivationCodeTxt.text.Trim(), false), (value) =>
+            ApiConnection.Connection<SendToActivationCodeMail, LoginSetData>("login.php", new SendToActivationCodeMail(thisMail, ActivationCodeTxt.text.Trim()), (value) =>
             {
 
                 if (value.success)
                 {
                     GameManager.SetToken(value.token);
-                    SceneManager.LoadScene("MainMenu");
+                    thisActivationCode = ActivationCodeTxt.text;
+                    activationControlPanel.SetActive(false);
+                    passwordConfirmationPanel.SetActive(true);
                 }
                 else
                     Debug.Log("Aktivation Code hatalý");
@@ -211,6 +218,13 @@ public class LoginManager : MonoBehaviour
     {
 
         passwordResetPanel.SetActive(false);
+
+        thisMail = passwordResetMail.text;
+        ApiConnection.Connection<SendMail, LoginSetData>("login.php", new SendMail { mail = thisMail }, (value) =>
+        {
+
+        });
+
         activationControlPanel.SetActive(true);
 
     }
@@ -218,9 +232,44 @@ public class LoginManager : MonoBehaviour
     public void LogingeriPanelOpen()
     {
         signinPanel.SetActive(false );
-        passwordConfirmationPanel.SetActive(false);
-        loginPanel.SetActive(false) ;
+       loginPanel.SetActive(false) ;
         menuPenel .SetActive(true) ;
+    }
+    public void ResetPasswordLoginOpen() 
+    {
+        passwordConfirmationPanel.SetActive(false);
+
+        if (passworCondirmationnRepead.text == passwordConfirmationInput.text)
+            ApiConnection.Connection<SendToActivationCodeMailPassword, LoginSetData>("login.php", new SendToActivationCodeMailPassword(thisMail, thisActivationCode, passworCondirmationnRepead.text), (value) =>
+            {
+
+                if (value.success)
+                {
+
+                    menuPenel.SetActive(true);
+                    
+                }
+                else
+                {
+
+                    Debug.Log("ÞifreKaydedilemedi.");
+                    passwordConfirmationPanel.SetActive(true);
+
+                }
+
+            });
+        else
+        {
+
+            Debug.Log("Þifreler Eþleþmiyor.");
+            passwordConfirmationPanel.SetActive(true);
+
+        }
+    }
+    public void MailBackButton() 
+    {
+        activationControlPanel .SetActive(false);
+        passwordConfirmationPanel .SetActive(true);
     }
 
     void Start()

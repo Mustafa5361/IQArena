@@ -724,7 +724,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.5, y: -331}
+  m_AnchoredPosition: {x: 7.5, y: -239}
   m_SizeDelta: {x: 375, y: 95.73828}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &277165500
@@ -1714,7 +1714,6 @@ RectTransform:
   - {fileID: 1104770099}
   - {fileID: 141587931}
   - {fileID: 1582427577}
-  - {fileID: 1439998871}
   - {fileID: 277165499}
   m_Father: {fileID: 755123148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1880,7 +1879,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &755123148
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2997,6 +2996,9 @@ MonoBehaviour:
   RankPlayerPlanel: {fileID: 8304255897779063313, guid: 95929de301470cd46bc889397acc615f, type: 3}
   MatchPanel: {fileID: 1846898732}
   MatchPlayerPlanel: {fileID: 2383856732221090468, guid: 591cb8cf1c9cdb148ad1c23f18af95aa, type: 3}
+  user: {fileID: 141587932}
+  point: {fileID: 1582427578}
+  rank: {fileID: 277165500}
   unitBtn: {fileID: 6089037027138465232, guid: cec627778af9f5143b63f4ec842cf043, type: 3}
   MatchHistory1:
   - win: Win
@@ -3799,85 +3801,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427002325}
   m_CullTransparentMesh: 1
---- !u!1 &1439998870
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1439998871}
-  - component: {fileID: 1439998873}
-  - component: {fileID: 1439998872}
-  m_Layer: 5
-  m_Name: ' HighRankPanel'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1439998871
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1439998870}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 670092260}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.5, y: -204}
-  m_SizeDelta: {x: 375, y: 102.15234}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1439998872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1439998870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.11764707, g: 0.11764707, b: 0.11764707, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
-    m_FontSize: 50
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 4
-    m_MaxSize: 50
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "En y\xFCksek rank"
---- !u!222 &1439998873
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1439998870}
-  m_CullTransparentMesh: 0
 --- !u!1 &1445255103
 GameObject:
   m_ObjectHideFlags: 0
@@ -4102,7 +4025,7 @@ GameObject:
   - component: {fileID: 1582427579}
   - component: {fileID: 1582427578}
   m_Layer: 5
-  m_Name: ' RankBadgePanel'
+  m_Name: PointPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4124,7 +4047,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.5, y: -86}
+  m_AnchoredPosition: {x: 7.4999, y: -101}
   m_SizeDelta: {x: 375, y: 88.80725}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1582427578
@@ -4160,7 +4083,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Rank Rozeti
+  m_Text: Point
 --- !u!222 &1582427579
 CanvasRenderer:
   m_ObjectHideFlags: 0

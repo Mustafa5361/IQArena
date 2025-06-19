@@ -3,7 +3,7 @@
 class dbConnection  
 {
     private $host = "localhost";
-    private $dbName = "iqarenadb";
+    private $dbName = "iqarena";
     private $username = "iqarena";
     private $password = "1Fs6tnJfFrO79";
     private $conn;

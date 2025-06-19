@@ -12,7 +12,7 @@ public class GameFinishData
 
     public override string ToString()
     {
-        return finished + " / " + thisCupChange + " / " + thisUsername + " / " + thisPoint;
+        return finished + " / " + thisCupChange + " / " + thisUsername + " / " + enemyUsername + " / " + thisPoint;
     }
 
 }

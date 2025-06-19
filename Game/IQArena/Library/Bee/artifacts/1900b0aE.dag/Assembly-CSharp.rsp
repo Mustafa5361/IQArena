@@ -411,9 +411,9 @@
 "Assets/Importing/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/Importing/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
 "Assets/Scripts/AdminPanelManager/AdminPanelManager.cs"
+"Assets/Scripts/AdminPanelManager/UnitBtnGetQuestion.cs"
 "Assets/Scripts/ApiConnection/ApiConnection.cs"
 "Assets/Scripts/ApiConnection/Communication.cs"
-"Assets/Scripts/ApiConnection/CustomCertificateHandler.cs"
 "Assets/Scripts/FileSystem/FileSystem.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/GameMenu/FinishScripts/FinishDataWrite.cs"
@@ -428,7 +428,7 @@
 "Assets/Scripts/GameMenu/WriteQuestion.cs"
 "Assets/Scripts/LoginMenu/LoginData.cs"
 "Assets/Scripts/LoginMenu/LoginManager.cs"
-"Assets/Scripts/LoginMenu/TokenKontrol.cs"
+"Assets/Scripts/LoginMenu/SentMail.cs"
 "Assets/Scripts/MainMenu/ArrangementData.cs"
 "Assets/Scripts/MainMenu/MainMenuManager.cs"
 "Assets/Scripts/MainMenu/MatchHistoryData.cs"
@@ -440,6 +440,10 @@
 "Assets/Scripts/MainMenu/Units/GetValuesUnit.cs"
 "Assets/Scripts/MainMenu/WriteToken.cs"
 "Assets/Scripts/PlayerInformation/GetRank.cs"
+"Assets/Scripts/ProfileData/MatchHistory.cs"
+"Assets/Scripts/ProfileData/profilData.cs"
+"Assets/Scripts/RememberMe/SaveToken.cs"
+"Assets/Scripts/RememberMe/TokenControl.cs"
 -langversion:9.0
 
 /deterministic

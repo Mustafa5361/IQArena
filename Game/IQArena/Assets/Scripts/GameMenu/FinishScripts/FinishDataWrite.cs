@@ -14,6 +14,8 @@ public class FinishDataWrite : MonoBehaviour
     public void CreateDates(string title, params Data[] datas)
     {
 
+        this.title.text = title;
+
         foreach (var data in datas)
         {
 

@@ -97,7 +97,7 @@ class createQuestion
 
         $query = $this -> db -> fetchAll(
             "SELECT question, answerA, answerB, answerC, answerD, correctAnswer FROM question 
-            WHERE unitID = :unitID
+            WHERE unitID = :unitID and isHide = 0
             ORDER BY RAND()
             LIMIT 10",
             [
