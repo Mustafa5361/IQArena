@@ -26,6 +26,16 @@ public class AdminPanelManager : MonoBehaviour
     {
         AdminPanel.SetActive(false);
         Question.SetActive(true);
+
+        ApiConnection.Connection<GetApiUnitOrQuestionData, GetUnitBtnData>("Admin/getUnitOrQuestion.php", new GetApiUnitOrQuestionData(), (value) =>
+        {
+
+            Question.GetComponent<CreateBtns>().CreateButtonsUnit(value.units.ToArray());
+            if (value.units[0] != null)
+                GetQuestionApi(value.units[0].unitID);
+
+        });
+
     }
 
     public void QuestionClose()
@@ -51,6 +61,19 @@ public class AdminPanelManager : MonoBehaviour
     public void AdminLogOut()
     {
         SceneManager.LoadScene("Login");
+    }
+
+    //Apiden Questionlarý Çekecek Fonksiyon
+    public void GetQuestionApi(int unitID)
+    {
+
+        ApiConnection.Connection<GetApiUnitOrQuestionData, GetQuestionBtnData>("Admin/getUnitOrQuestion.php", new GetApiUnitOrQuestionData { unitID = unitID}, (value) =>
+        {
+
+            Question.GetComponent<CreateBtns>().CreateButtonsQuestion(value.questions.ToArray());
+
+        });
+
     }
 
 }
