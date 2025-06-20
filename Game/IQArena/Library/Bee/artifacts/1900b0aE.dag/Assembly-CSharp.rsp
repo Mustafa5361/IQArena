@@ -441,7 +441,7 @@
 "Assets/Scripts/MainMenu/WriteToken.cs"
 "Assets/Scripts/PlayerInformation/GetRank.cs"
 "Assets/Scripts/ProfileData/MatchHistory.cs"
-"Assets/Scripts/ProfileData/profilData.cs"
+"Assets/Scripts/ProfileData/ProfilData.cs"
 "Assets/Scripts/RememberMe/SaveToken.cs"
 "Assets/Scripts/RememberMe/TokenControl.cs"
 -langversion:9.0
