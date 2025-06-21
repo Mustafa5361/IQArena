@@ -19,8 +19,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
             if($value -> desired == "unit")
             {
+                // düzelttiğim kısım 21.06.25
+                //$query = $db -> fetch("SELECT * from unit", []);
+                $query = $db->fetch("SELECT unitID, unitName, visibility, accessibility FROM unit", []);
 
-                $query = $db -> fetch("SELECT * from unit", []);
 
                 echo json_encode(["units" => $query]);
 
