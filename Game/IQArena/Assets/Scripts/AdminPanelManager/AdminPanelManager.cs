@@ -22,6 +22,16 @@ public class AdminPanelManager : MonoBehaviour
         UnitMenu.SetActive(false);
         AdminPanel.SetActive(true);
     }
+    public void UsersOpen()
+    {
+        AdminPanel.SetActive(false);
+        UsersMenu.SetActive(true);
+    }
+    public void UsersClose()
+    {
+        UsersMenu.SetActive(false);
+        AdminPanel.SetActive(true);     
+    }
     public void QuestionOpen()
     {
         AdminPanel.SetActive(false);

@@ -4,6 +4,13 @@ using UnityEngine;
 public class CreateBtns : MonoBehaviour
 {
 
+    private void Awake()
+    {
+        
+        
+
+    }
+
     #region Unit Buttunlarýnýn oluþturulmasý.
 
     [SerializeField] private GameObject unitBtnSpawnPoint; // oluþturulacaklarý panel

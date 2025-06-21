@@ -232,8 +232,7 @@ public class MainMenuManager : MonoBehaviour
         });
         
         Ranknmenu.SetActive(true);
-        RectTransform rt = RankPanel.GetComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(height, height);
+        RankPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(0, height);
 
     }
 
